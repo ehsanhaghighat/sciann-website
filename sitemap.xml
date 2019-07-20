@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+     <loc>http://sciann.com/</loc>
+     <lastmod>2019-07-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://sciann.com/why-use-sciann/</loc>
+     <lastmod>2019-07-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://sciann.com/getting-started/scimodel-guide/</loc>
+     <lastmod>2019-07-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://sciann.com/getting-started/functional-guide/</loc>
+     <lastmod>2019-07-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+</urlset>
