@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>SciModels - SciANN Documentation</title>
+  <title>Fields - SciANN Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "SciModels";
-    var mkdocs_page_input_path = "scimodels.md";
-    var mkdocs_page_url = "/scimodels/";
+    var mkdocs_page_name = "Fields";
+    var mkdocs_page_input_path = "fields.md";
+    var mkdocs_page_url = "/fields/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -73,23 +73,9 @@
     </ul>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">SciModels</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#scimodels">SciModels</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#scimodel">SciModel</a></li>
-        
-            <li><a class="toctree-l3" href="#solve">solve</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../scimodels/">SciModels</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -102,9 +88,21 @@
     <a class="" href="../variables/">Variables</a>
 	    </li>
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href="../fields/">Fields</a>
+    <a class="current" href="./">Fields</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#fields">Fields</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#field">Field</a></li>
+        
+        </ul>
+    
+
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -139,10 +137,10 @@
     
       
     
-    <li>SciModels</li>
+    <li>Fields</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/sciann/sciann/edit/master/docs/scimodels.md"
+        <a href="https://github.com/sciann/sciann/edit/master/docs/fields.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -152,48 +150,38 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="scimodels">SciModels</h1>
-<hr />
-<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/sciann/engine/models.py#L17">[source]</a></span></p>
-<h3 id="scimodel">SciModel</h3>
-<pre><code class="python">sciann.engine.models.SciModel(inputs=None, constraints=None, loss_func='mse', plot_to_file=None)
+                <h1 id="fields">Fields</h1>
+<p><code>Field</code> is a layer to define outputs of each Functional. It is very much similar to Keras' <code>Dense</code> layer. </p>
+<p>It is not necessary to be defined explicitly, however, if you are expecting multiple outputs, it is better to be defined using <code>Field</code>.  </p>
+<pre><code class="python">from sciann import Field
+
+Fx = Field(10, name='Fx')
 </code></pre>
 
-<p>Configures the model for training.</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/sciann/engine/functional.py#L324">[source]</a></span></p>
+<h3 id="field">Field</h3>
+<pre><code class="python">sciann.engine.functional.Field(units=1, name=None, activation=&lt;function linear at 0x7fd730a13598&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7fd700bb11d0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7fd700bb1198&gt;, trainable=True, dtype=None)
+</code></pre>
+
+<p>Configures the <code>Field</code> class for the model outputs.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>inputs</strong>: Main variables of the network, also known as <code>xs</code>,
-    should be of type <code>Variable</code>.</li>
-<li><strong>constraints</strong>: list all conditions to be imposed on the training;
-    should be of type <code>Constraint</code>.</li>
-<li><strong>plot_to_file</strong>: A string fine name to output the network architecture.</li>
+<li><strong>units</strong>: Positive integer.
+    Dimension of the output of the network.</li>
+<li><strong>name</strong>: String.
+    Assigns a layer name for the output.</li>
+<li><strong>activation</strong>: Callable.
+    A callable object for the activation.</li>
+<li><strong>kernel_initializer</strong>: Initializer for the kernel.
+    Defaulted to a normal distribution.</li>
+<li><strong>bias_initializer</strong>: Initializer for the bias.
+    Defaulted to a normal distribution.</li>
+<li><strong>trainable</strong>: Boolean to activate parameters of the network.</li>
+<li><strong>dtype</strong>: data-type of the network parameters, can be
+    ('float16', 'float32', 'float64').</li>
 </ul>
-<p><strong>Returns</strong></p>
 <p><strong>Raises</strong></p>
-<ul>
-<li><strong>ValueError</strong>: <code>inputs</code> must be of type Variable.
-            <code>constraints</code> must be of type Functional.</li>
-</ul>
-<hr />
-<h3 id="solve">solve</h3>
-<pre><code class="python">solve(x_true, weights=None, epochs=10, batch_size=256, shuffle=True, callbacks=None, stop_after=100, default_zero_weight=1e-10)
-</code></pre>
-
-<p>Performs the training on the model.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>epochs</strong>: Integer. Number of epochs to train the model.
-    An epoch is an iteration over the entire <code>x</code> and <code>y</code>
-    data provided.</li>
-<li><strong>batch_size</strong>: Integer or 'None'.
-    Number of samples per gradient update.
-    If unspecified, 'batch_size' will default to 128.</li>
-<li><strong>shuffle</strong>: Boolean (whether to shuffle the training data).
-    Default value is True.</li>
-<li><strong>callbacks</strong>: List of <code>keras.callbacks.Callback</code> instances.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p>A 'History' object after performing fitting.</p>
               
             </div>
           </div>
@@ -201,10 +189,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../functionals/" class="btn btn-neutral float-right" title="Functionals">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../constraints/" class="btn btn-neutral float-right" title="Constraints">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../getting-started/functional-guide/" class="btn btn-neutral" title="Guide to Functional"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../variables/" class="btn btn-neutral" title="Variables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -232,10 +220,10 @@
           <a href="https://github.com/sciann/sciann/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../getting-started/functional-guide/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../variables/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../functionals/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../constraints/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

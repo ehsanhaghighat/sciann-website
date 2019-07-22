@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Guide to SciANN model - SciANN Documentation</title>
+  <title>Use SciANN to perform neural network training on synthetic data. - SciANN Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Guide to SciANN model";
-    var mkdocs_page_input_path = "getting-started/scimodel-guide.md";
-    var mkdocs_page_url = "/getting-started/scimodel-guide/";
+    var mkdocs_page_name = "Use SciANN to perform neural network training on synthetic data.";
+    var mkdocs_page_input_path = "examples/example_fitting_1d.md";
+    var mkdocs_page_url = "/examples/example_fitting_1d/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -62,19 +62,13 @@
 		
     <span class="caption-text">Getting started</span>
     <ul class="subnav">
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Guide to SciANN model</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#getting-started-with-the-sciann-model-or-scimodel">Getting started with the SciANN model or SciModel</a></li>
-    
-
-    </ul>
+    <a class="" href="../../getting-started/scimodel-guide/">Guide to SciANN model</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../functional-guide/">Guide to Functional</a>
+    <a class="" href="../../getting-started/functional-guide/">Guide to Functional</a>
                 </li>
     </ul>
 	    </li>
@@ -130,15 +124,11 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Getting started &raquo;</li>
-        
-      
     
-    <li>Guide to SciANN model</li>
+    <li>Use SciANN to perform neural network training on synthetic data.</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/sciann/sciann/edit/master/docs/getting-started/scimodel-guide.md"
+        <a href="https://github.com/sciann/sciann/edit/master/docs/examples/example_fitting_1d.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -148,32 +138,31 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="getting-started-with-the-sciann-model-or-scimodel">Getting started with the SciANN model or <code>SciModel</code></h1>
-<p>The <code>SciModel</code> is the relation between network inputs, i.e. <code>Variable</code> and network outputs, i.e. <code>Conditions</code>. </p>
-<p>You can set up a <code>SciModel</code> as simple as the code bellow:</p>
-<pre><code class="python">from sciann import Variable, Functional, SciModel
-from sciann.conditions import Data
-
-x = Variable(&quot;x&quot;)
-y = Functional(&quot;y&quot;, x)
-cy = Data(y)
-model = SciModel(cy)
-</code></pre>
-
-<hr />
+                <h1 id="use-sciann-to-perform-neural-network-training-on-synthetic-data">Use SciANN to perform neural network training on synthetic data.</h1>
+<p>TODO: Add proper document.</p>
+<p>```python</p>
+<p>import numpy as np
+from sciann import Variable, Functional, SciModel
+from sciann.constraints import Data</p>
+<h1 id="synthetic-data-generated-from-sin-function-over-0-2pi">Synthetic data generated from sin function over [0, 2pi]</h1>
+<p>x_true = np.linspace(0, np.pi*2, 10000)
+y_true = np.sin(x_true)</p>
+<h1 id="the-network-inputs-should-be-defined-with-variable">The network inputs should be defined with Variable.</h1>
+<p>x = Variable('x', dtype='float32')</p>
+<h1 id="each-network-is-defined-by-functional">Each network is defined by Functional.</h1>
+<p>y = Functional('y', x, [10, 10, 10], activation='tanh')</p>
+<h1 id="the-training-data-is-a-condition-constraint-on-the-model">The training data is a condition (constraint) on the model.</h1>
+<p>c1 = Data(y, y_true)</p>
+<h1 id="the-model-is-formed-with-input-x-and-condition-c1">The model is formed with input <code>x</code> and condition <code>c1</code>.</h1>
+<p>model = SciModel(x, c1)</p>
+<h1 id="training-solve-runs-the-optimization-and-finds-the-parameters">Training: .solve runs the optimization and finds the parameters.</h1>
+<p>model.solve(x_true, batch_size=32, epochs=100)</p>
+<h1 id="used-to-evaluate-the-model-after-the-training">used to evaluate the model after the training.</h1>
+<p>y_pred = model.predict(x_true)```</p>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../functional-guide/" class="btn btn-neutral float-right" title="Guide to Functional">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../../why-use-sciann/" class="btn btn-neutral" title="Why use SciANN"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -199,10 +188,6 @@ model = SciModel(cy)
           <a href="https://github.com/sciann/sciann/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../why-use-sciann/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../functional-guide/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

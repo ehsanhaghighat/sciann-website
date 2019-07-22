@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Utils - SciANN Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Utils";
+    var mkdocs_page_input_path = "utils.md";
+    var mkdocs_page_url = "/utils/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> SciANN Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../why-use-sciann/">Why use SciANN</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/scimodel-guide/">Guide to SciANN model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../getting-started/functional-guide/">Guide to Functional</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../scimodels/">SciModels</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../functionals/">Functionals</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../variables/">Variables</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../fields/">Fields</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../constraints/">Constraints</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Utils</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#utils">Utils:</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#gradients">gradients</a></li>
+        
+            <li><a class="toctree-l3" href="#lambda_gradient">lambda_gradient</a></li>
+        
+            <li><a class="toctree-l3" href="#diff">diff</a></li>
+        
+            <li><a class="toctree-l3" href="#radial_basis">radial_basis</a></li>
+        
+            <li><a class="toctree-l3" href="#sin">sin</a></li>
+        
+            <li><a class="toctree-l3" href="#cos">cos</a></li>
+        
+            <li><a class="toctree-l3" href="#tan">tan</a></li>
+        
+            <li><a class="toctree-l3" href="#tanh">tanh</a></li>
+        
+            <li><a class="toctree-l3" href="#exp">exp</a></li>
+        
+            <li><a class="toctree-l3" href="#pow">pow</a></li>
+        
+            <li><a class="toctree-l3" href="#add">add</a></li>
+        
+            <li><a class="toctree-l3" href="#sub">sub</a></li>
+        
+            <li><a class="toctree-l3" href="#mul">mul</a></li>
+        
+            <li><a class="toctree-l3" href="#div">div</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">SciANN Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Utils</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/sciann/sciann/edit/master/docs/utils.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="utils">Utils:</h1>
+<hr />
+<h3 id="gradients">gradients</h3>
+<pre><code class="python">keras.utils.gradients(xs, order=1)
+</code></pre>
+
+<p>Returns the gradients of y in <code>ys</code> w.r.t. x in <code>xs</code>.</p>
+<p><code>ys</code> and <code>xs</code> are each a Tensor or a list of tensors.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>ys</strong>: A tensor or list of tesnors to be differentiated.</li>
+<li><strong>xs</strong>: A tensor or list of tensors to be used for differentiation.</li>
+<li><strong>order</strong>: Order of differentiation. </li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A list of <code>D^n y / Dx^n</code> for each y and x in <code>ys</code> and <code>xs</code>.</p>
+<hr />
+<h3 id="lambda_gradient">lambda_gradient</h3>
+<pre><code class="python">keras.utils.lambda_gradient(xs, order=1, name='')
+</code></pre>
+
+<p>Returns the gradients of y in <code>ys</code> w.r.t. x in <code>xs</code> using Lambda layers.</p>
+<p><code>ys</code> and <code>xs</code> are each a Tensor or a list of tensors.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>ys</strong>: A tensor or list of tesnors to be differentiated.</li>
+<li><strong>xs</strong>: A tensor or list of tensors to be used for differentiation.</li>
+<li><strong>name</strong>: A str name for the Lambda layer. </li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A tuple, <code>(layers, grads)</code>.
+- <strong>layers</strong>: A Lambda layer or list of Lambda layers where the gradient operator is applied.
+- <strong>grads</strong>: A gradient tensor or list of gradient tensors. </p>
+<hr />
+<h3 id="diff">diff</h3>
+<pre><code class="python">keras.utils.diff()
+</code></pre>
+
+<p>Computes diff of functional object f.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>f</strong>: Functional object.</li>
+<li><strong>ys</strong>: layer name for <code>ys</code> to differentiate.</li>
+<li><strong>xs</strong>: layer name for <code>xs</code> to be differentiated w.r.t.</li>
+<li><strong>order</strong>: order of differentiation w.r.t. xs - defaulted to 1.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A new functional object.</p>
+<hr />
+<h3 id="radial_basis">radial_basis</h3>
+<pre><code class="python">keras.utils.radial_basis(ci, radii)
+</code></pre>
+
+<p>Apply <code>radial_basis</code> function to x element-wise.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>xs</strong>: List of functional objects.</li>
+<li><strong>ci</strong>: Center of basis functional (same length as xs).</li>
+<li><strong>radii</strong>: standard deviation or radius from the center.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A new functional object.</p>
+<hr />
+<h3 id="sin">sin</h3>
+<pre><code class="python">keras.utils.sin()
+</code></pre>
+
+<p>Computes sin of x element-wise.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>x</strong>: Functional object.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A new functional object.</p>
+<hr />
+<h3 id="cos">cos</h3>
+<pre><code class="python">keras.utils.cos()
+</code></pre>
+
+<p>Computes cos of x element-wise.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>x</strong>: Functional object.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A new functional object.</p>
+<hr />
+<h3 id="tan">tan</h3>
+<pre><code class="python">keras.utils.tan()
+</code></pre>
+
+<p>Computes tan of x element-wise.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>x</strong>: Functional object.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A new functional object.</p>
+<hr />
+<h3 id="tanh">tanh</h3>
+<pre><code class="python">keras.utils.tanh()
+</code></pre>
+
+<p>Computes tanh of x element-wise.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>x</strong>: Functional object.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A new functional object.</p>
+<hr />
+<h3 id="exp">exp</h3>
+<pre><code class="python">keras.utils.exp()
+</code></pre>
+
+<p>Computes exp of x element-wise.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>x</strong>: Functional object.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A new functional object.</p>
+<hr />
+<h3 id="pow">pow</h3>
+<pre><code class="python">keras.utils.pow(a)
+</code></pre>
+
+<p>Element-wise exponentiation applied to the <code>Functional</code> object.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>f</strong>: Functional object.</li>
+<li><strong>a</strong>: Python integer.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A Functional.</p>
+<hr />
+<h3 id="add">add</h3>
+<pre><code class="python">keras.utils.add(other)
+</code></pre>
+
+<p>Element-wise addition applied to the <code>Functional</code> objects.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>f</strong>: Functional object.</li>
+<li><strong>other</strong>: A python number or a tensor or a functional object.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A Functional.</p>
+<hr />
+<h3 id="sub">sub</h3>
+<pre><code class="python">keras.utils.sub(other)
+</code></pre>
+
+<p>Element-wise subtraction applied to the <code>Functional</code> objects.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>f</strong>: Functional object.</li>
+<li><strong>other</strong>: A python number or a tensor or a functional object.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A Functional.</p>
+<hr />
+<h3 id="mul">mul</h3>
+<pre><code class="python">keras.utils.mul(other)
+</code></pre>
+
+<p>Element-wise multiplication applied to the <code>Functional</code> objects.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>f</strong>: Functional object.</li>
+<li><strong>other</strong>: A python number or a tensor or a functional object.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A Functional.</p>
+<hr />
+<h3 id="div">div</h3>
+<pre><code class="python">keras.utils.div(other)
+</code></pre>
+
+<p>Element-wise division applied to the <code>Functional</code> objects.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>f</strong>: Functional object.</li>
+<li><strong>other</strong>: A python number or a tensor or a functional object.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A Functional.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../constraints/" class="btn btn-neutral" title="Constraints"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/sciann/sciann/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../constraints/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" defer></script>
+      <script src="../mathjaxhelper.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
