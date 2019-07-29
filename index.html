@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Documentation for Keras, the Python Deep Learning library.">
+  <meta name="description" content="Documentation for SciANN, the Python Deep Learning library.">
   
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>Home - SciANN Documentation</title>
@@ -158,7 +158,7 @@
               
                 <h1 id="sciann-the-python-physics-informed-library">SciANN: The python Physics-Informed Library</h1>
 <h2 id="you-have-just-found-sciann">You have just found SciANN.</h2>
-<p>SciANN is a high-level artificial neural networks API, written in Python and capable of running on top of <a href="https://github.com/keras-team/keras">Keras</a> and <a href="https://github.com/tensorflow/tensorflow">TensorFlow</a>. It was developed with a focus on enabling fast experimentation with different networks and emphasis on scientific computations, physics informed deep learing, and inversion. <em>Being able to go from idea to result with the least possible delay is key to doing good research.</em></p>
+<p>SciANN is a high-level artificial neural networks API, written in Python using <a href="https://keras.io">Keras</a> and <a href="https://www.tensorflow.org">TensorFlow</a> backends. It is developed with a focus on enabling fast experimentation with different networks architectures and with emphasis on scientific computations, physics informed deep learing, and inversion. <em>Being able to start deep-learning in a very few lines of code is key to doing good research.</em></p>
 <p>Use SciANN if you need a deep learning library that:</p>
 <ul>
 <li>Allows for easy and fast prototyping.</li>
@@ -166,32 +166,43 @@
 <li>Takes advantage TensorFlow and Keras features including seamlessly running on CPU and GPU.</li>
 </ul>
 <p>Read the documentation at <a href="https://sciann.com">SicANN.com</a>.</p>
+<p>Cite SciANN for your work at:</p>
+<pre><code>@misc{haghighat2019sciann, 
+    title={SciANN: A Keras wrapper for scientific computations and physics-informed deep learning using artificial neural networks}, 
+    author={Haghighat, Ehsan and Juanes, Ruben}, 
+    url={https://github.com/sciann/sciann.git}, 
+    year={2019} 
+}
+</code></pre>
 <p>Sciann is compatible with: <strong>Python 2.7-3.6</strong>.</p>
 <hr />
 <h2 id="getting-started-30-seconds-to-sciann">Getting started: 30 seconds to SciANN</h2>
-<p>The core data structure of SciANN is a <strong>model</strong>, a way to organize SciANN functionals and Keras layers. The simplest type of model is a [<code>SciModel</code>] with sub-[<code>Functionals</code>].</p>
-<p>Here is the <code>SciANN</code> model:</p>
+<p>The core data structure of SciANN is a <code>Functional</code>, a way to organize inputs (<code>Variables</code>) and outputs (<code>Fields</code>) of a network. </p>
+<p>Targets are imposed on <code>Functional</code> instances using <code>Constraint</code>s. </p>
+<p>The SciANN model (<code>SciModel</code>) is formed from inputs (<code>Variables</code>) and targets(<code>Constraints</code>). The model is then trained by calling the <code>solve</code> function.  </p>
+<p>Here is the simplest <code>SciANN</code> model:</p>
 <pre><code class="python">from sciann import Variable, Functional, SciModel
+from sciann.constraints import Data
 
 x = Variable('x')
 y = Functional('y')
-model = SciModel(x, y)
+
+# y_true is a Numpy array of (N,1) -- with N as number of samples.  
+model = SciModel(x, Data(y, y_true))
 </code></pre>
 
-<p>Plotting a model as easy as passing a file_name to the SciModel:</p>
-<pre><code class="python">model = SciModel(x, y, plot_to_file='file_path')
+<p>This is associated to the simplest neural network possible, i.e. a linear relation between the input variable <code>x</code> and the output variable <code>y</code> with only two parameters to be learned.</p>
+<p>Plotting a network is as easy as passing a file_name to the SciModel:</p>
+<pre><code class="python">model = SciModel(x, Data(y, y_true), plot_to_file='file_path')
 </code></pre>
 
 <p>Once your model looks good, perform the learning with <code>.solve()</code>:</p>
-<pre><code class="python">model.solve(x_true, epochs=5, batch_size=32)
+<pre><code class="python"># x_true is a Numpy array of (N,1) -- with N as number of samples. 
+model.solve(x_true, epochs=5, batch_size=32)
 </code></pre>
 
-<p>You can now iterate on your training data in batches:</p>
-<pre><code class="python"># x_train and y_train are Numpy arrays --just like in the Scikit-Learn API.
-model.fit(x_train, y_train, epochs=5, batch_size=32)
-</code></pre>
-
-<p>You can evaluate model on new data:</p>
+<p>You can iterate on your training data in batches and in multiple epochs. Please check <a href="https://keras.io">Keras</a> documentation on <code>model.fit</code> for more information on possible options. </p>
+<p>You can evaluate the model any time on new data:</p>
 <pre><code class="python">classes = model.predict(x_test, batch_size=128)
 </code></pre>
 
@@ -230,8 +241,11 @@ If you are on Windows, you will need to remove <code>sudo</code> to run the comm
 </code></pre>
 
 <p>Then, <code>cd</code> to the SciANN folder and run the install command:</p>
-<pre><code class="sh">cd sciann
-sudo python setup.py install
+<pre><code class="sh">sudo python setup.py install
+</code></pre>
+
+<p>or</p>
+<pre><code class="sh">sudo pip install .
 </code></pre>
 
 <hr />
@@ -291,5 +305,5 @@ sudo python setup.py install
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-07-26 01:47:41
+Build Date UTC : 2019-07-29 18:25:52
 -->
