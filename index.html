@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Documentation for SciANN, the Python Deep Learning library.">
+  <meta name="description" content="Documentation for SciANN.">
   
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>Home - SciANN Documentation</title>
@@ -53,7 +53,7 @@
     <a class="current" href=".">Home</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#sciann-the-python-physics-informed-library">SciANN: The python Physics-Informed Library</a></li>
+    <li class="toctree-l2"><a href="#sciann-a-keras-wrapper-for-scientific-computations-and-physics-informed-deep-learning-using-artificial-neural-networks">SciANN: A Keras wrapper for scientific computations and physics-informed deep learning using artificial neural networks</a></li>
     
         <ul>
         
@@ -87,6 +87,17 @@
                 <li class="">
                     
     <a class="" href="getting-started/functional-guide/">Guide to Functional</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Examples</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="examples/example-fitting-1d/">Curve fitting in 1D</a>
                 </li>
     </ul>
 	    </li>
@@ -156,7 +167,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="sciann-the-python-physics-informed-library">SciANN: The python Physics-Informed Library</h1>
+                <h1 id="sciann-a-keras-wrapper-for-scientific-computations-and-physics-informed-deep-learning-using-artificial-neural-networks">SciANN: A Keras wrapper for scientific computations and physics-informed deep learning using artificial neural networks</h1>
 <h2 id="you-have-just-found-sciann">You have just found SciANN.</h2>
 <p>SciANN is a high-level artificial neural networks API, written in Python using <a href="https://keras.io">Keras</a> and <a href="https://www.tensorflow.org">TensorFlow</a> backends. It is developed with a focus on enabling fast experimentation with different networks architectures and with emphasis on scientific computations, physics informed deep learing, and inversion. <em>Being able to start deep-learning in a very few lines of code is key to doing good research.</em></p>
 <p>Use SciANN if you need a deep learning library that:</p>
@@ -166,15 +177,17 @@
 <li>Takes advantage TensorFlow and Keras features including seamlessly running on CPU and GPU.</li>
 </ul>
 <p>Read the documentation at <a href="https://sciann.com">SicANN.com</a>.</p>
-<p>Cite SciANN for your work at:</p>
+<p>Cite SciANN in your publications if it helps your research:</p>
 <pre><code>@misc{haghighat2019sciann, 
     title={SciANN: A Keras wrapper for scientific computations and physics-informed deep learning using artificial neural networks}, 
     author={Haghighat, Ehsan and Juanes, Ruben}, 
-    url={https://github.com/sciann/sciann.git}, 
-    year={2019} 
+    howpublished={\url{https://sciann.com}}, 
+    url = {https://github.com/sciann/sciann.git}
+year={2019} 
 }
 </code></pre>
-<p>Sciann is compatible with: <strong>Python 2.7-3.6</strong>.</p>
+
+<p>SciANN is compatible with: <strong>Python 2.7-3.6</strong>.</p>
 <hr />
 <h2 id="getting-started-30-seconds-to-sciann">Getting started: 30 seconds to SciANN</h2>
 <p>The core data structure of SciANN is a <code>Functional</code>, a way to organize inputs (<code>Variables</code>) and outputs (<code>Fields</code>) of a network. </p>
@@ -305,5 +318,5 @@ If you are on Windows, you will need to remove <code>sudo</code> to run the comm
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-07-29 18:25:52
+Build Date UTC : 2019-07-31 04:11:04
 -->

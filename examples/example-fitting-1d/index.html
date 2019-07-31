@@ -7,23 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Why use SciANN - SciANN Documentation</title>
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Curve fitting in 1D - SciANN Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Why use SciANN";
-    var mkdocs_page_input_path = "why-use-sciann.md";
-    var mkdocs_page_url = "/why-use-sciann/";
+    var mkdocs_page_name = "Curve fitting in 1D";
+    var mkdocs_page_input_path = "examples/example-fitting-1d.md";
+    var mkdocs_page_url = "/examples/example-fitting-1d/";
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -36,9 +36,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> SciANN Documentation</a>
+        <a href="../.." class="icon icon-home"> SciANN Documentation</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -50,18 +50,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Home</a>
+    <a class="" href="../..">Home</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Why use SciANN</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#why-use-sciann-among-all-other-codes">Why use SciANN among all other codes?</a></li>
-    
-
-    </ul>
+    <a class="" href="../../why-use-sciann/">Why use SciANN</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -70,11 +64,11 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../getting-started/scimodel-guide/">Guide to SciANN model</a>
+    <a class="" href="../../getting-started/scimodel-guide/">Guide to SciANN model</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../getting-started/functional-guide/">Guide to Functional</a>
+    <a class="" href="../../getting-started/functional-guide/">Guide to Functional</a>
                 </li>
     </ul>
 	    </li>
@@ -83,41 +77,47 @@
 		
     <span class="caption-text">Examples</span>
     <ul class="subnav">
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../examples/example-fitting-1d/">Curve fitting in 1D</a>
+    <a class="current" href="./">Curve fitting in 1D</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#curve-fitting-in-1d">Curve fitting in 1D</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../scimodels/">SciModels</a>
+    <a class="" href="../../scimodels/">SciModels</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../functionals/">Functionals</a>
+    <a class="" href="../../functionals/">Functionals</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../variables/">Variables</a>
+    <a class="" href="../../variables/">Variables</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../fields/">Fields</a>
+    <a class="" href="../../fields/">Fields</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../constraints/">Constraints</a>
+    <a class="" href="../../constraints/">Constraints</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../utils/">Utils</a>
+    <a class="" href="../../utils/">Utils</a>
 	    </li>
           
         </ul>
@@ -130,7 +130,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">SciANN Documentation</a>
+        <a href="../..">SciANN Documentation</a>
       </nav>
 
       
@@ -138,14 +138,18 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
+    <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Examples &raquo;</li>
+        
+      
     
-    <li>Why use SciANN</li>
+    <li>Curve fitting in 1D</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/sciann/sciann/edit/master/docs/why-use-sciann.md"
+        <a href="https://github.com/sciann/sciann/edit/master/docs/examples/example-fitting-1d.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -155,47 +159,42 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="why-use-sciann-among-all-other-codes">Why use SciANN among all other codes?</h1>
-<p>The main purpose of SciANN is a platform for people with Scientific Computations backgrounds in mind. </p>
-<p>You will find this code very useful for: </p>
-<ul>
-<li>
-<p>Solving ODEs and PDEs using densely connect, complex networks, recurrent networks are on the way. </p>
-</li>
-<li>
-<p>This platform is ready to use for Curve Fitting, Differentiations, Integration, etc. </p>
-</li>
-<li>
-<p>If you have other scientific computations in mind that are not implemented yet, <a href="mailto:info@sciann.com"><code>contact us</code></a>. </p>
-</li>
-</ul>
-<p>As an example, let's fit a neural network with three-hidden layers, each with 10 neurons and \( \tanh \) activation function, on data generated from \( sin(x) \): </p>
+                <h1 id="curve-fitting-in-1d">Curve fitting in 1D</h1>
+<p>Here, a 1D curve fitting example is explored. Imagine, a synthetic data
+generated from \( \sin(x) \) over the range of \( [0, 2\pi] \).</p>
+<p>To train a neural network model on this curve, you should first define a <code>Variable</code>.</p>
+<p>A neural network with three layers, each containing 10 neurons, and with <code>tanh</code> activation function is then generated
+using the <code>Functional</code> class.</p>
+<p>The target is imposed on the output using the <code>Data</code> class from <code>Constraint</code>, and passed to the <code>SciModel</code> to form a
+Sciann model.</p>
 <pre><code class="python">import numpy as np
 from sciann import Variable, Functional, SciModel
-from sciann.conditions import Data
+from sciann.constraints import Data
+
 
 # Synthetic data generated from sin function over [0, 2pi]
 x_true = np.linspace(0, np.pi*2, 10000)
 y_true = np.sin(x_true)
 
-# The network inputs should be defined with Variable. 
+# The network inputs should be defined with Variable.
 x = Variable('x', dtype='float32')
-# Each network is defined by Functional. 
+
+# Each network is defined by Functional.
 y = Functional('y', x, [10, 10, 10], activation='tanh')
-# The training data is a condition (constraint) on the model. 
+
+# The training data is a condition (constraint) on the model.
 c1 = Data(y, y_true)
+
 # The model is formed with input `x` and condition `c1`.
 model = SciModel(x, c1)
 
-# Training: .solve runs the optimization and finds the parameters. 
+# Training: .solve runs the optimization and finds the parameters.
 model.solve(x_true, batch_size=32, epochs=100)
 
-# used to evaluate the model after the training. 
+# used to evaluate the model after the training.
 y_pred = model.predict(x_true)
-</code></pre>
 
-<p>As you may find, this code takes advantage of <a href="http://keras.io"><code>Keras</code></a> great design and takes it to the next level for scientific computations. </p>
-<p>w</p>
+</code></pre>
               
             </div>
           </div>
@@ -203,10 +202,10 @@ y_pred = model.predict(x_true)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../getting-started/scimodel-guide/" class="btn btn-neutral float-right" title="Guide to SciANN model">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../scimodels/" class="btn btn-neutral float-right" title="SciModels">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../getting-started/functional-guide/" class="btn btn-neutral" title="Guide to Functional"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -234,18 +233,18 @@ y_pred = model.predict(x_true)
           <a href="https://github.com/sciann/sciann/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../getting-started/functional-guide/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../getting-started/scimodel-guide/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../scimodels/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js" defer></script>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" defer></script>
-      <script src="../mathjaxhelper.js" defer></script>
-      <script src="../search/main.js" defer></script>
+      <script src="../../mathjaxhelper.js" defer></script>
+      <script src="../../search/main.js" defer></script>
 
 </body>
 </html>
