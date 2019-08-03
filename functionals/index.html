@@ -189,9 +189,9 @@ model = SciModel(x, Data(Fxy),
 </code></pre>
 
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/engine/functional.py#L20">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L21">[source]</a></span></p>
 <h3 id="functional">Functional</h3>
-<pre><code class="python">sciann.engine.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='linear', enrichment='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x1277112e8&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1277112b0&gt;, dtype=None, trainable=True)
+<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='linear', enrichment='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x132c61a90&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x132c61a58&gt;, dtype=None, trainable=True)
 </code></pre>
 
 <p>Configures the Functional object (Neural Network).</p>
@@ -219,9 +219,9 @@ variables (Variable): [Sub-]Network inputs.
 <li><strong>TypeError</strong>:</li>
 </ul>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/engine/functional.py#L286">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/variable.py#L11">[source]</a></span></p>
 <h3 id="variable">Variable</h3>
-<pre><code class="python">sciann.engine.functional.Variable(name=None, tensor=None, dtype=None)
+<pre><code class="python">sciann.functionals.variable.Variable(name=None, tensor=None, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Variable</code> object for the network's input.</p>
@@ -236,9 +236,9 @@ variables (Variable): [Sub-]Network inputs.
 </ul>
 <p><strong>Raises</strong></p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/engine/functional.py#L324">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L15">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.engine.functional.Field(units=1, name=None, activation=&lt;function linear at 0x12763ec80&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x1277112e8&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1277112b0&gt;, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(units=1, name=None, activation=&lt;function linear at 0x132ba5378&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x132c4c940&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x132c4c908&gt;, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>

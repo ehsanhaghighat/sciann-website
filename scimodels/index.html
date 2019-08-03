@@ -165,25 +165,33 @@
               
                 <h1 id="scimodels">SciModels</h1>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/engine/models.py#L17">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/models/model.py#L17">[source]</a></span></p>
 <h3 id="scimodel">SciModel</h3>
-<pre><code class="python">sciann.engine.models.SciModel(inputs=None, constraints=None, loss_func='mse', plot_to_file=None)
+<pre><code class="python">sciann.models.model.SciModel(inputs=None, targets=None, loss_func='mse', plot_to_file=None)
 </code></pre>
 
 <p>Configures the model for training.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>inputs</strong>: Main variables of the network, also known as <code>xs</code>,
-    should be of type <code>Variable</code>.</li>
-<li><strong>constraints</strong>: list all conditions to be imposed on the training;
-    should be of type <code>Constraint</code>.</li>
-<li><strong>plot_to_file</strong>: A string fine name to output the network architecture.</li>
+<li><strong>inputs</strong>: Main variables (also called inputs, or independent variables) of the network, <code>xs</code>.
+    They all should be of type <code>Variable</code>.</li>
 </ul>
-<p><strong>Returns</strong></p>
+<p>targets: list all targets (also called outputs, or dependent variables)
+to be satisfied during the training. Expected list members are:
+- Entries of type <code>Constraint</code>, such as Data, Tie, etc.
+- Entries of type <code>Functional</code> can be:
+. A single <code>Functional</code>: will be treated as a zero constraint.
+An example is a PDE that is supposed to be zero.
+. A tuple of (<code>Functional</code>, data: np.ndarray): will be treated as a <code>Constraint</code> of type <code>Data</code>.
+. A tuple of (<code>Functional</code>, <code>Functional</code>): will be treated as a <code>Constraint</code> of type <code>Tie</code>.
+- If you need to impose more complex types of constraints or
+to impose a constraint partially in a specific part of region,
+use <code>Data</code> or <code>Tie</code> classes from <code>Constraint</code>.</p>
+<p>plot_to_file: A string file name to output the network architecture.</p>
 <p><strong>Raises</strong></p>
 <ul>
 <li><strong>ValueError</strong>: <code>inputs</code> must be of type Variable.
-            <code>constraints</code> must be of type Functional.</li>
+            <code>targets</code> must be of types <code>Functional</code>, or (<code>Functional</code>, data), or (<code>Functional</code>, <code>Functional</code>).</li>
 </ul>
 <hr />
 <h3 id="solve">solve</h3>
