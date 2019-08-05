@@ -165,7 +165,7 @@
               
                 <h1 id="scimodels">SciModels</h1>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/models/model.py#L17">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/models/model.py#L18">[source]</a></span></p>
 <h3 id="scimodel">SciModel</h3>
 <pre><code class="python">sciann.models.model.SciModel(inputs=None, targets=None, loss_func='mse', plot_to_file=None)
 </code></pre>
@@ -180,9 +180,9 @@
 to be satisfied during the training. Expected list members are:
 - Entries of type <code>Constraint</code>, such as Data, Tie, etc.
 - Entries of type <code>Functional</code> can be:
-. A single <code>Functional</code>: will be treated as a zero constraint.
+. A single <code>Functional</code>: will be treated as a Data constraint.
+The object can be just a <code>Functional</code> or any derivatives of <code>Functional</code>s.
 An example is a PDE that is supposed to be zero.
-. A tuple of (<code>Functional</code>, data: np.ndarray): will be treated as a <code>Constraint</code> of type <code>Data</code>.
 . A tuple of (<code>Functional</code>, <code>Functional</code>): will be treated as a <code>Constraint</code> of type <code>Tie</code>.
 - If you need to impose more complex types of constraints or
 to impose a constraint partially in a specific part of region,
@@ -195,21 +195,36 @@ use <code>Data</code> or <code>Tie</code> classes from <code>Constraint</code>.<
 </ul>
 <hr />
 <h3 id="solve">solve</h3>
-<pre><code class="python">solve(x_true, weights=None, epochs=10, batch_size=256, shuffle=True, callbacks=None, stop_after=100, default_zero_weight=1e-10)
+<pre><code class="python">solve(x_true, y_true, weights=None, epochs=10, batch_size=256, shuffle=True, callbacks=None, stop_after=100, default_zero_weight=1e-10)
 </code></pre>
 
 <p>Performs the training on the model.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>epochs</strong>: Integer. Number of epochs to train the model.
+<li><strong>x_true</strong>: list of <code>Xs</code> associated to targets of <code>Y</code>.
+    Expecting a list of np.ndarray of size (N,1) each,
+    with N as the sample size.</li>
+<li><strong>y_true</strong>: list of true <code>Ys</code> associated to the targets defined during model setup.
+    Expecting the same size as list of targets defined in <code>SciModel</code>.
+        - To impose the targets at specific <code>Xs</code> only,
+            pass a tuple of <code>(ids, y_true)</code> for that target.</li>
+</ul>
+<p>weights (np.ndarray): A global sample weight to be applied to samples.
+    Expecting an array of shape (N,1), with N as the sample size.
+    Default value is <code>one</code> to consider all samples equally important.
+epochs (Integer): Number of epochs to train the model.
     An epoch is an iteration over the entire <code>x</code> and <code>y</code>
-    data provided.</li>
-<li><strong>batch_size</strong>: Integer or 'None'.
+    data provided.
+batch_size (Integer): or 'None'.
     Number of samples per gradient update.
-    If unspecified, 'batch_size' will default to 128.</li>
+    If unspecified, 'batch_size' will default to 128.</p>
+<ul>
 <li><strong>shuffle</strong>: Boolean (whether to shuffle the training data).
     Default value is True.</li>
 <li><strong>callbacks</strong>: List of <code>keras.callbacks.Callback</code> instances.</li>
+<li><strong>stop_after</strong>: To stop after certain missed epochs.
+    Defaulted to 100.</li>
+<li><strong>default_zero_weight</strong>: a small number for zero sample-weight.</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p>A 'History' object after performing fitting.</p>
