@@ -175,7 +175,7 @@ z = Variable('z')
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/variable.py#L11">[source]</a></span></p>
 <h3 id="variable">Variable</h3>
-<pre><code class="python">sciann.functionals.variable.Variable(name=None, tensor=None, dtype=None)
+<pre><code class="python">sciann.functionals.variable.Variable(name=None, units=1, tensor=None, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Variable</code> object for the network's input.</p>
@@ -183,6 +183,8 @@ z = Variable('z')
 <ul>
 <li><strong>name</strong>: String.
     Required as derivatives work only with layer names.</li>
+<li><strong>units</strong>: Int.
+    Number of feature of input var.</li>
 <li><strong>tensor</strong>: Tensorflow <code>Tensor</code>.
     Can be pass as the input path.</li>
 <li><strong>dtype</strong>: data-type of the network parameters, can be
