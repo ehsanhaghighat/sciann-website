@@ -94,7 +94,7 @@
     <a class="current" href="./">Functionals</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#functionals">Functionals</a></li>
+    <li class="toctree-l2"><a href="#intro">Intro</a></li>
     
         <ul>
         
@@ -165,7 +165,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="functionals">Functionals</h1>
+                <h1 id="intro">Intro</h1>
 <p>A combination of neural network layers form a <code>Functional</code>. </p>
 <p>Mathematically, a <code>functional</code> is a general mapping from space \(X\) into some output space \(Y\). Once the parameters of this transformation are found, this mapping is called a <code>function</code>. </p>
 <p><code>Functional</code>s are needed to form <code>SciModels</code>. </p>
@@ -191,28 +191,33 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L17">[source]</a></span></p>
 <h3 id="functional">Functional</h3>
-<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='linear', enrichment='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x13156d3c8&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x13156d630&gt;, dtype=None, trainable=True)
+<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='linear', enrichment='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x1301c2e10&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1301c2eb8&gt;, dtype=None, trainable=True)
 </code></pre>
 
 <p>Configures the Functional object (Neural Network).</p>
 <p><strong>Arguments</strong></p>
-<p>fields (String or Field): [Sub-]Network outputs.
+<ul>
+<li><strong>fields</strong>: String or Field.
+    [Sub-]Network outputs.
     It can be of type <code>String</code> - Associated fields will be created internally.
-    It can be of type <code>Field</code> or <code>Functional</code>
-variables (Variable): [Sub-]Network inputs.
-    It can be of type <code>Variable</code> or other Functional objects.
-- <strong>hidden_layers</strong>: A list indicating neurons in the hidden layers.
-    e.g. [10, 100, 20] is a for hidden layers with 10, 100, 20, respectively.
-- <strong>activation</strong>: Activation function for the hidden layers.
-    Last layer will have a linear output.
-- <strong>enrichment</strong>: Activation function to be applied to the network output.
-- <strong>kernel_initializer</strong>: Initializer of the <code>Kernel</code>, from <code>k.initializers</code>.
-- <strong>bias_initializer</strong>: Initializer of the <code>Bias</code>, from <code>k.initializers</code>.
-- <strong>dtype</strong>: data-type of the network parameters, can be
+    It can be of type <code>Field</code> or <code>Functional</code></li>
+<li><strong>variables</strong>: Variable.
+    [Sub-]Network inputs.
+    It can be of type <code>Variable</code> or other Functional objects.</li>
+<li><strong>hidden_layers</strong>: A list indicating neurons in the hidden layers.
+    e.g. [10, 100, 20] is a for hidden layers with 10, 100, 20, respectively.</li>
+<li><strong>activation</strong>: Activation function for the hidden layers.
+    Last layer will have a linear output.</li>
+<li><strong>enrichment</strong>: Activation function to be applied to the network output.</li>
+<li><strong>kernel_initializer</strong>: Initializer of the <code>Kernel</code>, from <code>k.initializers</code>.</li>
+<li><strong>bias_initializer</strong>: Initializer of the <code>Bias</code>, from <code>k.initializers</code>.</li>
+<li><strong>dtype</strong>: data-type of the network parameters, can be
     ('float16', 'float32', 'float64').
-    Note: Only network inputs should be set.</p>
-<p>trainable (Boolean): False if network is not trainable, True otherwise.
-    Default value is True.</p>
+    Note: Only network inputs should be set.</li>
+<li><strong>trainable</strong>: Boolean.
+    False if network is not trainable, True otherwise.
+    Default value is True.</li>
+</ul>
 <p><strong>Raises</strong></p>
 <ul>
 <li><strong>ValueError</strong>:</li>
@@ -240,7 +245,7 @@ variables (Variable): [Sub-]Network inputs.
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L11">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x12f872598&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x13156d470&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x13156d518&gt;, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x12e459c80&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x1300f4be0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1300f4c88&gt;, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>

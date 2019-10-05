@@ -99,7 +99,7 @@
     <a class="current" href="./">Variables</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#variables">Variables</a></li>
+    <li class="toctree-l2"><a href="#intro">Intro</a></li>
     
         <ul>
         
@@ -161,7 +161,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="variables">Variables</h1>
+                <h1 id="intro">Intro</h1>
 <p><code>Variable</code> is a way to to define inputs to the network, very much similar to the <code>Input</code> class in <code>Keras</code>. However, since we need to perform differentiation and other operations on the network, we cannot just use <code>Input</code>. Instead, we need to define the inputs of the network through <code>Variable</code>. </p>
 <p>For scientific computations, a <code>Variable</code> has only a dimension of 1. Therefore, if you need to have a three-dimensional coordinate inputs, you need to define three variables:</p>
 <pre><code class="python">from sciann import Variable

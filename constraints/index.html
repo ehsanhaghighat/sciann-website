@@ -109,7 +109,7 @@
     <a class="current" href="./">Constraints</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#constraints">Constraints:</a></li>
+    <li class="toctree-l2"><a href="#intro">Intro</a></li>
     
         <ul>
         
@@ -169,7 +169,10 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="constraints">Constraints:</h1>
+                <h1 id="intro">Intro</h1>
+<p><code>Constraint</code> contains set of classes to impose conditions on the targets or 
+ their derivatives. This classes are designed as a way to impose constraints 
+ on different parts of targets and domain.   </p>
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/constraints/data.py#L11">[source]</a></span></p>
 <h3 id="data">Data</h3>
@@ -178,12 +181,18 @@
 
 <p>Data class to impose to the system.</p>
 <p><strong>Arguments</strong></p>
-<p>cond (Functional): The <code>Functional</code> object that Data condition
-    will be imposed on.
-y_true (np.ndarray): Expected output to set the <code>pde</code> to.
-    If not provided, will be set to <code>zero</code>.
-x_true_ids (np.ndarray): A 1D numpy arrays consists of node-ids to impose the condition.
-name (String): A <code>str</code> for name of the pde.</p>
+<ul>
+<li><strong>cond</strong>: Functional.
+    The <code>Functional</code> object that Data condition
+    will be imposed on.</li>
+<li><strong>y_true</strong>: np.ndarray.
+    Expected output to set the <code>pde</code> to.
+    If not provided, will be set to <code>zero</code>.</li>
+<li><strong>x_true_ids</strong>: np.ndarray.
+    A 1D numpy arrays consists of node-ids to impose the condition.</li>
+<li><strong>name</strong>: String.
+    A <code>str</code> for name of the pde.</li>
+</ul>
 <p><strong>Returns</strong></p>
 <p><strong>Raises</strong></p>
 <ul>
@@ -198,11 +207,17 @@ name (String): A <code>str</code> for name of the pde.</p>
 
 <p>PDE class to impose to the system.</p>
 <p><strong>Arguments</strong></p>
-<p>pde (Functional): The <code>Functional</code> object that pde if formed on.
-sol (np.ndarray): Expected output to set the <code>pde</code> to.
-    If not provided, will be set to <code>zero</code>.
-mesh_ids (np.ndarray): A 1D numpy arrays consists of node-ids to impose the condition.
-name (String): A <code>str</code> for name of the pde.</p>
+<ul>
+<li><strong>pde</strong>: Functional.
+    The <code>Functional</code> object that pde if formed on.</li>
+<li><strong>sol</strong>: np.ndarray.
+    Expected output to set the <code>pde</code> to.
+    If not provided, will be set to <code>zero</code>.</li>
+<li><strong>mesh_ids</strong>: np.ndarray.
+    A 1D numpy arrays consists of node-ids to impose the condition.</li>
+<li><strong>name</strong>: String.
+    A <code>str</code> for name of the pde.</li>
+</ul>
 <p><strong>Returns</strong></p>
 <p><strong>Raises</strong></p>
 <ul>
@@ -217,12 +232,18 @@ name (String): A <code>str</code> for name of the pde.</p>
 
 <p>Dirichlet class to impose to the system.</p>
 <p><strong>Arguments</strong></p>
-<p>cond (Functional): The <code>Functional</code> object that Dirichlet condition
-    will be imposed on.
-sol (np.ndarray): Expected output to set the <code>pde</code> to.
-    If not provided, will be set to <code>zero</code>.
-mesh_ids (np.ndarray): A 1D numpy arrays consists of node-ids to impose the condition.
-name (String): A <code>str</code> for name of the pde.</p>
+<ul>
+<li><strong>cond</strong>: Functional.
+    The <code>Functional</code> object that Dirichlet condition
+    will be imposed on.</li>
+<li><strong>sol</strong>: np.ndarray.
+    Expected output to set the <code>pde</code> to.
+    If not provided, will be set to <code>zero</code>.</li>
+<li><strong>mesh_ids</strong>: np.ndarray.
+    A 1D numpy arrays consists of node-ids to impose the condition.</li>
+<li><strong>name</strong>: String.
+    A <code>str</code> for name of the pde.</li>
+</ul>
 <p><strong>Returns</strong></p>
 <p><strong>Raises</strong></p>
 <ul>
@@ -237,13 +258,20 @@ name (String): A <code>str</code> for name of the pde.</p>
 
 <p>Dirichlet class to impose to the system.</p>
 <p><strong>Arguments</strong></p>
-<p>cond (Functional): The <code>Functional</code> object that Neumann condition
-    will be imposed on.
-sol (np.ndarray): Expected output to set the <code>pde</code> to.
-    If not provided, will be set to <code>zero</code>.
-mesh_ids (np.ndarray): A 1D numpy arrays consists of node-ids to impose the condition.
-var (String): A layer name to differentiate <code>cond</code> with respect to.
-name (String): A <code>str</code> for name of the pde.</p>
+<ul>
+<li><strong>cond</strong>: Functional.
+    The <code>Functional</code> object that Neumann condition
+    will be imposed on.</li>
+<li><strong>sol</strong>: np.ndarray.
+    Expected output to set the <code>pde</code> to.
+    If not provided, will be set to <code>zero</code>.</li>
+<li><strong>mesh_ids</strong>: np.ndarray.
+    A 1D numpy arrays consists of node-ids to impose the condition.</li>
+<li><strong>var</strong>: String.
+    A layer name to differentiate <code>cond</code> with respect to.</li>
+<li><strong>name</strong>: String.
+    A <code>str</code> for name of the pde.</li>
+</ul>
 <p><strong>Returns</strong></p>
 <p><strong>Raises</strong></p>
 <ul>
@@ -259,12 +287,19 @@ name (String): A <code>str</code> for name of the pde.</p>
 <p>Tie class to constrain network outputs.
 constraint: <code>cond1 - cond2 == sol</code>.</p>
 <p><strong>Arguments</strong></p>
-<p>cond1 (Functional): A <code>Functional</code> object to be tied to cond2.
-cond2 (Functional): A 'Functional' object to be tied to cond1.
-sol (np.ndarray): Expected output to set the <code>pde</code> to.
-    If not provided, will be set to <code>zero</code>.
-mesh_ids (np.ndarray): A 1D numpy arrays consists of node-ids to impose the condition.
-name (String): A <code>str</code> for name of the pde.</p>
+<ul>
+<li><strong>cond1</strong>: Functional.
+    A <code>Functional</code> object to be tied to cond2.</li>
+<li><strong>cond2</strong>: Functional.
+    A 'Functional' object to be tied to cond1.</li>
+<li><strong>sol</strong>: np.ndarray.
+    Expected output to set the <code>pde</code> to.
+    If not provided, will be set to <code>zero</code>.</li>
+<li><strong>mesh_ids</strong>: np.ndarray.
+    A 1D numpy arrays consists of node-ids to impose the condition.</li>
+<li><strong>name</strong>: String.
+    A <code>str</code> for name of the pde.</li>
+</ul>
 <p><strong>Returns</strong></p>
 <p><strong>Raises</strong></p>
 <ul>
