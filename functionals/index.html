@@ -27,6 +27,16 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-149481893-1', 'sciann.com');
+      ga('send', 'pageview');
+  </script>
+  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -191,7 +201,7 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L17">[source]</a></span></p>
 <h3 id="functional">Functional</h3>
-<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='linear', enrichment='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x1301c2e10&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1301c2eb8&gt;, dtype=None, trainable=True)
+<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', enrichment='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x1366c3ef0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1366c3f98&gt;, dtype=None, trainable=True)
 </code></pre>
 
 <p>Configures the Functional object (Neural Network).</p>
@@ -206,9 +216,11 @@ model = SciModel(x, Data(Fxy),
     It can be of type <code>Variable</code> or other Functional objects.</li>
 <li><strong>hidden_layers</strong>: A list indicating neurons in the hidden layers.
     e.g. [10, 100, 20] is a for hidden layers with 10, 100, 20, respectively.</li>
-<li><strong>activation</strong>: Activation function for the hidden layers.
+<li><strong>activation</strong>: defaulted to "tanh".
+    Activation function for the hidden layers.
     Last layer will have a linear output.</li>
-<li><strong>enrichment</strong>: Activation function to be applied to the network output.</li>
+<li><strong>enrichment</strong>: defaulted to "linear".
+    Activation function to be applied to the network output.</li>
 <li><strong>kernel_initializer</strong>: Initializer of the <code>Kernel</code>, from <code>k.initializers</code>.</li>
 <li><strong>bias_initializer</strong>: Initializer of the <code>Bias</code>, from <code>k.initializers</code>.</li>
 <li><strong>dtype</strong>: data-type of the network parameters, can be
@@ -245,7 +257,7 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L11">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x12e459c80&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x1300f4be0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1300f4c88&gt;, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x134a59bf8&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x1366f5b00&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1366f5ba8&gt;, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>
