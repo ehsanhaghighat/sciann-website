@@ -127,10 +127,6 @@
         
             <li><a class="toctree-l3" href="#pde">PDE</a></li>
         
-            <li><a class="toctree-l3" href="#dirichlet">Dirichlet</a></li>
-        
-            <li><a class="toctree-l3" href="#neumann">Neumann</a></li>
-        
             <li><a class="toctree-l3" href="#tie">Tie</a></li>
         
         </ul>
@@ -186,7 +182,7 @@
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/constraints/data.py#L11">[source]</a></span></p>
 <h3 id="data">Data</h3>
-<pre><code class="python">sciann.constraints.data.Data(cond, y_true=None, x_true_ids=None, name='data')
+<pre><code class="python">sciann.constraints.data.Data(cond, name='data')
 </code></pre>
 
 <p>Data class to impose to the system.</p>
@@ -195,11 +191,6 @@
 <li><strong>cond</strong>: Functional.
     The <code>Functional</code> object that Data condition
     will be imposed on.</li>
-<li><strong>y_true</strong>: np.ndarray.
-    Expected output to set the <code>pde</code> to.
-    If not provided, will be set to <code>zero</code>.</li>
-<li><strong>x_true_ids</strong>: np.ndarray.
-    A 1D numpy arrays consists of node-ids to impose the condition.</li>
 <li><strong>name</strong>: String.
     A <code>str</code> for name of the pde.</li>
 </ul>
@@ -212,7 +203,7 @@
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/constraints/pde.py#L11">[source]</a></span></p>
 <h3 id="pde">PDE</h3>
-<pre><code class="python">sciann.constraints.pde.PDE(pde, sol=None, mesh_ids=None, name='pde')
+<pre><code class="python">sciann.constraints.pde.PDE(pde, name='pde')
 </code></pre>
 
 <p>PDE class to impose to the system.</p>
@@ -220,78 +211,18 @@
 <ul>
 <li><strong>pde</strong>: Functional.
     The <code>Functional</code> object that pde if formed on.</li>
-<li><strong>sol</strong>: np.ndarray.
-    Expected output to set the <code>pde</code> to.
-    If not provided, will be set to <code>zero</code>.</li>
-<li><strong>mesh_ids</strong>: np.ndarray.
-    A 1D numpy arrays consists of node-ids to impose the condition.</li>
 <li><strong>name</strong>: String.
     A <code>str</code> for name of the pde.</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p><strong>Raises</strong></p>
 <ul>
-<li><strong>ValueError</strong>: 'pde' should be a functional object.
-            'mesh' should be a list of numpy arrays.</li>
-</ul>
-<hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/constraints/dirichlet.py#L11">[source]</a></span></p>
-<h3 id="dirichlet">Dirichlet</h3>
-<pre><code class="python">sciann.constraints.dirichlet.Dirichlet(cond, sol=None, mesh_ids=None, name='dirichlet')
-</code></pre>
-
-<p>Dirichlet class to impose to the system.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>cond</strong>: Functional.
-    The <code>Functional</code> object that Dirichlet condition
-    will be imposed on.</li>
-<li><strong>sol</strong>: np.ndarray.
-    Expected output to set the <code>pde</code> to.
-    If not provided, will be set to <code>zero</code>.</li>
-<li><strong>mesh_ids</strong>: np.ndarray.
-    A 1D numpy arrays consists of node-ids to impose the condition.</li>
-<li><strong>name</strong>: String.
-    A <code>str</code> for name of the pde.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><strong>Raises</strong></p>
-<ul>
-<li><strong>ValueError</strong>: 'cond' should be a functional object.
-            'mesh' should be a list of numpy arrays.</li>
-</ul>
-<hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/constraints/neumann.py#L11">[source]</a></span></p>
-<h3 id="neumann">Neumann</h3>
-<pre><code class="python">sciann.constraints.neumann.Neumann(cond, sol=None, mesh_ids=None, var=None, name='neumann')
-</code></pre>
-
-<p>Dirichlet class to impose to the system.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>cond</strong>: Functional.
-    The <code>Functional</code> object that Neumann condition
-    will be imposed on.</li>
-<li><strong>sol</strong>: np.ndarray.
-    Expected output to set the <code>pde</code> to.
-    If not provided, will be set to <code>zero</code>.</li>
-<li><strong>mesh_ids</strong>: np.ndarray.
-    A 1D numpy arrays consists of node-ids to impose the condition.</li>
-<li><strong>var</strong>: String.
-    A layer name to differentiate <code>cond</code> with respect to.</li>
-<li><strong>name</strong>: String.
-    A <code>str</code> for name of the pde.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><strong>Raises</strong></p>
-<ul>
-<li><strong>ValueError</strong>: 'cond' should be a functional object.
-            'mesh' should be a list of numpy arrays.</li>
+<li><strong>ValueError</strong>: 'pde' should be a functional object.</li>
 </ul>
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/constraints/tie.py#L11">[source]</a></span></p>
 <h3 id="tie">Tie</h3>
-<pre><code class="python">sciann.constraints.tie.Tie(cond1, cond2, sol=None, mesh_ids=None, name='tie')
+<pre><code class="python">sciann.constraints.tie.Tie(cond1, cond2, name='tie')
 </code></pre>
 
 <p>Tie class to constrain network outputs.
@@ -302,19 +233,13 @@ constraint: <code>cond1 - cond2 == sol</code>.</p>
     A <code>Functional</code> object to be tied to cond2.</li>
 <li><strong>cond2</strong>: Functional.
     A 'Functional' object to be tied to cond1.</li>
-<li><strong>sol</strong>: np.ndarray.
-    Expected output to set the <code>pde</code> to.
-    If not provided, will be set to <code>zero</code>.</li>
-<li><strong>mesh_ids</strong>: np.ndarray.
-    A 1D numpy arrays consists of node-ids to impose the condition.</li>
 <li><strong>name</strong>: String.
     A <code>str</code> for name of the pde.</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p><strong>Raises</strong></p>
 <ul>
-<li><strong>ValueError</strong>: 'pde' should be a functional object.
-            'mesh' should be a list of numpy arrays.</li>
+<li><strong>ValueError</strong>: 'pde' should be a functional object.</li>
 </ul>
               
             </div>

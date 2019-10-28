@@ -114,6 +114,8 @@
         
             <li><a class="toctree-l3" href="#field">Field</a></li>
         
+            <li><a class="toctree-l3" href="#parameter">Parameter</a></li>
+        
         </ul>
     
 
@@ -201,7 +203,7 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L17">[source]</a></span></p>
 <h3 id="functional">Functional</h3>
-<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', enrichment='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x12d3c8e80&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x12d3c8f28&gt;, dtype=None, trainable=True)
+<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', enrichment='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x13403eb38&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x13403ebe0&gt;, dtype=None, trainable=True)
 </code></pre>
 
 <p>Configures the Functional object (Neural Network).</p>
@@ -257,7 +259,7 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L11">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x12b75fbf8&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x12d3faa90&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x12d3fab38&gt;, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x1322e4f28&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x134032470&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1340327f0&gt;, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>
@@ -278,6 +280,29 @@ model = SciModel(x, Data(Fxy),
     ('float16', 'float32', 'float64').</li>
 </ul>
 <p><strong>Raises</strong></p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/parameter.py#L19">[source]</a></span></p>
+<h3 id="parameter">Parameter</h3>
+<pre><code class="python">sciann.functionals.parameter.Parameter(val=1.0, min_max=None, inputs=None, name=None, non_neg=None)
+</code></pre>
+
+<p>Parameter functional to be used for parameter inversion.
+Inherited from Dense layer.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>val</strong>: float.
+    Initial value for the parameter.</li>
+<li><strong>min_max</strong>: [MIN, MAX].
+    A range to constrain the value of parameter.
+    This constraint will overwrite non_neg constraint if both are chosen.</li>
+<li><strong>inputs</strong>: Variables.
+    List of <code>Variable</code>s to the parameters.</li>
+<li><strong>name</strong>: str.
+    A name for the Parameter layer.</li>
+<li><strong>non_neg</strong>: boolean.
+    True (default) if only non-negative values are expected.</li>
+<li><strong>**kwargs</strong>: keras.layer.Dense accepted arguments.</li>
+</ul>
               
             </div>
           </div>
