@@ -161,7 +161,7 @@
     <li>Fields</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/sciann/sciann/edit/master/docs/fields.md"
+        <a href="https://github.com/sciann/sciann/edit/master/docs/sources/fields.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -176,13 +176,13 @@
 <p>It is not necessary to be defined explicitly, however, if you are expecting multiple outputs, it is better to be defined using <code>Field</code>.  </p>
 <pre><code class="python">from sciann import Field
 
-Fx = Field(10, name='Fx')
+Fx = Field(name='Fx', units=10)
 </code></pre>
 
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L11">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x13793cf28&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x13968c3c8&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x13968c748&gt;, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x12c936f28&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x12e6863c8&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x12e686748&gt;, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>
