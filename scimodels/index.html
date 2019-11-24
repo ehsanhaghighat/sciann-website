@@ -253,7 +253,7 @@ Example:
 </ul>
 <hr />
 <h3 id="train">train</h3>
-<pre><code class="python">train(x_true, y_true, weights=None, target_weights=None, epochs=10, batch_size=256, shuffle=True, callbacks=None, stop_after=100, default_zero_weight=1e-10)
+<pre><code class="python">train(x_true, y_true, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, shuffle=True, callbacks=None, stop_after=10, default_zero_weight=1e-10)
 </code></pre>
 
 <p>Performs the training on the model.</p>
@@ -271,17 +271,24 @@ Example:
     Expecting an array of shape (N,1), with N as the sample size.
     Default value is <code>one</code> to consider all samples equally important.</li>
 <li><strong>target_weights</strong>: (list) A weight for each target defined in <code>y_true</code>.</li>
-<li><strong>epochs</strong>: (Integer) Number of epochs to train the model.
-    An epoch is an iteration over the entire <code>x</code> and <code>y</code>
-    data provided.</li>
 <li><strong>batch_size</strong>: (Integer) or 'None'.
     Number of samples per gradient update.
-    If unspecified, 'batch_size' will default to 128.</li>
+    If unspecified, 'batch_size' will default to 2^6=64.</li>
+<li><strong>epochs</strong>: (Integer) Number of epochs to train the model.
+    Defaulted to 100.
+    An epoch is an iteration over the entire <code>x</code> and <code>y</code>
+    data provided.</li>
+<li><strong>learning_rate</strong>: (Tuple/List) (epochs, lrs).
+    Expects a list/tuple with a list of epochs and a list or learning rates.
+    It linearly interpolates between entries.
+    Defaulted to 0.001 with no decay.
+    Example:
+        learning_rate = ([0, 100, 1000], [0.001, 0.0005, 0.00001])</li>
 <li><strong>shuffle</strong>: Boolean (whether to shuffle the training data).
     Default value is True.</li>
 <li><strong>callbacks</strong>: List of <code>keras.callbacks.Callback</code> instances.</li>
 <li><strong>stop_after</strong>: To stop after certain missed epochs.
-    Defaulted to 100.</li>
+    Defaulted to 10.</li>
 <li><strong>default_zero_weight</strong>: a small number for zero sample-weight.</li>
 </ul>
 <p><strong>Returns</strong></p>
