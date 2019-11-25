@@ -254,7 +254,7 @@ Example:
 </ul>
 <hr />
 <h3 id="train">train</h3>
-<pre><code class="python">train(x_true, y_true, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, shuffle=True, callbacks=None, stop_after=10, save_weights_to=None, default_zero_weight=1e-10)
+<pre><code class="python">train(x_true, y_true, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, shuffle=True, callbacks=None, stop_after=10, save_weights_to=None, save_weights_freq=0, default_zero_weight=1e-10)
 </code></pre>
 
 <p>Performs the training on the model.</p>
@@ -291,6 +291,8 @@ Example:
 <li><strong>stop_after</strong>: To stop after certain missed epochs.
     Defaulted to 10.</li>
 <li><strong>save_weights_to</strong>: (file_path) If you want to save the state of the model (at the end of the training).</li>
+<li><strong>save_weights_freq</strong>: (Integer) Save weights every N epcohs.
+    Defaulted to 0.</li>
 <li><strong>default_zero_weight</strong>: a small number for zero sample-weight.</li>
 </ul>
 <p><strong>Returns</strong></p>
