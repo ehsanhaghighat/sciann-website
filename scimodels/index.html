@@ -107,8 +107,6 @@
         
             <li><a class="toctree-l3" href="#train">train</a></li>
         
-            <li><a class="toctree-l3" href="#solve">solve</a></li>
-        
             <li><a class="toctree-l3" href="#predict">predict</a></li>
         
             <li><a class="toctree-l3" href="#loss_functions">loss_functions</a></li>
@@ -297,12 +295,6 @@ Example:
 </ul>
 <p><strong>Returns</strong></p>
 <p>A Keras 'History' object after performing fitting.</p>
-<hr />
-<h3 id="solve">solve</h3>
-<pre><code class="python">solve(x_true, y_true, weights=None, target_weights=None, epochs=10, batch_size=256, shuffle=True, callbacks=None, stop_after=100, default_zero_weight=1e-10)
-</code></pre>
-
-<p>This is a legacy method - please use <code>train</code> instead of <code>solve</code>.</p>
 <hr />
 <h3 id="predict">predict</h3>
 <pre><code class="python">predict(xs, batch_size=None, verbose=0, steps=None)
