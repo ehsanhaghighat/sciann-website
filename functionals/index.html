@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  <link rel="canonical" href="https://www.sciann.com/functionals/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Functionals - SciANN Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -24,7 +25,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
   <script>
@@ -45,6 +46,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> SciANN Documentation</a>
         <div role="search">
@@ -55,96 +57,62 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="..">Home</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../why-use-sciann/">Why use SciANN</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Getting started</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../getting-started/scimodel-guide/">Guide to SciANN model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../getting-started/functional-guide/">Guide to Functional</a>
-                </li>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../why-use-sciann/">Why use SciANN</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../getting-started/scimodel-guide/">Guide to SciANN model</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../getting-started/functional-guide/">Guide to Functional</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Examples</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../examples/example-fitting-1d/">Curve fitting in 1D</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../scimodels/">SciModels</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Functionals</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functional">Functional</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#variable">Variable</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#field">Field</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameter">Parameter</a>
+    </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Examples</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../examples/example-fitting-1d/">Curve fitting in 1D</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../scimodels/">SciModels</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href="./">Functionals</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#intro">Intro</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#functional">Functional</a></li>
-        
-            <li><a class="toctree-l3" href="#variable">Variable</a></li>
-        
-            <li><a class="toctree-l3" href="#field">Field</a></li>
-        
-            <li><a class="toctree-l3" href="#parameter">Parameter</a></li>
-        
-        </ul>
-    
-
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../variables/">Variables</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../fields/">Fields</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../constraints/">Constraints</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../utils/">Utils</a>
-	    </li>
-          
-        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../variables/">Variables</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../fields/">Fields</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../constraints/">Constraints</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../utils/">Utils</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -172,6 +140,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -201,9 +170,9 @@ model = SciModel(x, Data(Fxy),
 </code></pre>
 
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L17">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L23">[source]</a></span></p>
 <h3 id="functional">Functional</h3>
-<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', output_activation='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7fe4c0e1dfd0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7fe4c0e22090&gt;, dtype=None, trainable=True)
+<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', output_activation='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x1a43f8b990&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1a43f8ba10&gt;, dtype=None, trainable=True)
 </code></pre>
 
 <p>Configures the Functional object (Neural Network).</p>
@@ -238,7 +207,7 @@ model = SciModel(x, Data(Fxy),
 <li><strong>TypeError</strong>:</li>
 </ul>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/variable.py#L11">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/variable.py#L10">[source]</a></span></p>
 <h3 id="variable">Variable</h3>
 <pre><code class="python">sciann.functionals.variable.Variable(name=None, units=1, tensor=None, dtype=None)
 </code></pre>
@@ -257,9 +226,9 @@ model = SciModel(x, Data(Fxy),
 </ul>
 <p><strong>Raises</strong></p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L11">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L12">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fe49071e4d0&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7fe4c0e19650&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7fe4c0e19750&gt;, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x6420c24d0&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x1a43f87190&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x1a43f87250&gt;, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>
@@ -281,7 +250,7 @@ model = SciModel(x, Data(Fxy),
 </ul>
 <p><strong>Raises</strong></p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/parameter.py#L18">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/parameter.py#L22">[source]</a></span></p>
 <h3 id="parameter">Parameter</h3>
 <pre><code class="python">sciann.functionals.parameter.Parameter(val=1.0, min_max=None, inputs=None, name=None, non_neg=None)
 </code></pre>
@@ -325,7 +294,7 @@ Inherited from Dense layer.</p>
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -335,7 +304,7 @@ Inherited from Dense layer.</p>
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/sciann/sciann/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -353,6 +322,11 @@ Inherited from Dense layer.</p>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" defer></script>
       <script src="../mathjaxhelper.js" defer></script>
       <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>
