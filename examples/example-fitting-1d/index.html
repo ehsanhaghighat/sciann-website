@@ -150,31 +150,38 @@ generated from \( \sin(x) \) over the range of \( [0, 2\pi] \).</p>
 using the <code>Functional</code> class.</p>
 <p>The target is imposed on the output using the <code>Data</code> class from <code>Constraint</code>, and passed to the <code>SciModel</code> to form a
 SciANN model.</p>
-<p>```python
-import numpy as np
+<pre><code class="python">import numpy as np
 from sciann import Variable, Functional, SciModel, Parameter
-from sciann.constraints import Data, MinMax</p>
-<h1 id="synthetic-data-generated-from-sin-function-over-0-2pi">Synthetic data generated from sin function over [0, 2pi]</h1>
-<p>x_true = np.linspace(0, np.pi*2, 10000)
-y_true = np.sin(x_true)</p>
-<h1 id="the-network-inputs-should-be-defined-with-variable">The network inputs should be defined with Variable.</h1>
-<p>x = Variable('x', dtype='float64')</p>
-<h1 id="each-network-is-defined-by-functional">Each network is defined by Functional.</h1>
-<p>y = Functional('y', x, [10, 10, 10], activation='tanh')</p>
-<p>d = Parameter(2.0, inputs=x)</p>
-<p>c2 = MinMax(d, -1.0, -0.5, penalty=10.0)</p>
-<h1 id="define-the-target-output-of-your-model">Define the target (output) of your model.</h1>
-<p>c1 = Data(y)</p>
-<h1 id="the-model-is-formed-with-input-x-and-condition-c1">The model is formed with input <code>x</code> and condition <code>c1</code>.</h1>
-<p>model = SciModel(x, [c1, c2])</p>
-<h1 id="training-train-runs-the-optimization-and-finds-the-parameters">Training: .train runs the optimization and finds the parameters.</h1>
-<p>model.train(x_true, 
-            [y_true, 'zeros'],
+from sciann.constraints import Data, MinMax
+
+
+# Synthetic data generated from sin function over [0, 2pi]
+x_true = np.linspace(0, np.pi*2, 10000)
+y_true = np.sin(x_true)
+
+# The network inputs should be defined with Variable.
+x = Variable('x', dtype='float64')
+
+# Each network is defined by Functional.
+y = Functional('y', x, [10, 10, 10], activation='tanh')
+
+d = Parameter(2.0, inputs=x)
+
+# Define the target (output) of your model.
+c1 = Data(y)
+
+# The model is formed with input `x` and condition `c1`.
+model = SciModel(x, c1)
+
+# Training: .train runs the optimization and finds the parameters.
+model.train(x_true, 
+            y_true,
             batch_size=32,
-            epochs=100)</p>
-<h1 id="used-to-evaluate-the-model-after-the-training">used to evaluate the model after the training.</h1>
-<p>y_pred = model.predict(x_true)</p>
-<p>print(d.eval(model, x_true).mean())```</p>
+            epochs=100)
+
+# used to evaluate the model after the training.
+y_pred = model.predict(x_true)
+</code></pre>
               
             </div>
           </div>
