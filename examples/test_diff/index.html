@@ -137,7 +137,8 @@
             <div class="section">
               
                 <pre><code class="python">from sciann import Variable, Field, Functional, SciModel
-from sciann.utils.math import diag_grad, div, dot
+from sciann.utils.math import diag_grad, div_grad, grad, dot
+from sciann.utils.math import diag_part, diag
 import keras.backend as K
 
 num_node = 1000
@@ -153,7 +154,14 @@ y = Field(&quot;y&quot;, units=3, dtype='float64')
 fx = Functional(y, x, 4*[10], 'tanh')
 
 yf = dot(fx, GF00)
-gf = div(fx, x)
+gf = grad(fx, x)
+gf1 = diag_grad(fx, x)
+gf2 = div_grad(fx, x)
+
+dotgf = dot(gf, diag(GF00))
+
+raise ValueError
+
 
 model = SciModel([x, GF00], gf)
 
