@@ -100,11 +100,11 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Utils</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#gradients">gradients</a>
+    <li class="toctree-l2"><a class="reference internal" href="#grad">grad</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#lambda_gradient">lambda_gradient</a>
+    <li class="toctree-l2"><a class="reference internal" href="#diag_grad">diag_grad</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#diff">diff</a>
+    <li class="toctree-l2"><a class="reference internal" href="#div">div</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#radial_basis">radial_basis</a>
     </li>
@@ -132,7 +132,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#mul">mul</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#div">div</a>
+    <li class="toctree-l2"><a class="reference internal" href="#div_1">div</a>
     </li>
     </ul>
                     </li>
@@ -174,43 +174,41 @@
               
                 <h1 id="intro">Intro</h1>
 <hr />
-<h3 id="gradients">gradients</h3>
-<pre><code class="python">sciann.utils.gradients(xs, order=1)
+<h3 id="grad">grad</h3>
+<pre><code class="python">sciann.utils.grad()
 </code></pre>
 
-<p>Returns the gradients of y in <code>ys</code> w.r.t. x in <code>xs</code>.</p>
-<p><code>ys</code> and <code>xs</code> are each a Tensor or a list of tensors.</p>
+<p>Computes gradient tensor of functional object f.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>ys</strong>: A tensor or list of tesnors to be differentiated.</li>
-<li><strong>xs</strong>: A tensor or list of tensors to be used for differentiation.</li>
-<li><strong>order</strong>: Order of differentiation. </li>
+<li><strong>f</strong>: Functional object.</li>
+<li><strong>ys</strong>: layer name for <code>ys</code> to differentiate.</li>
+<li><strong>xs</strong>: layer name for <code>xs</code> to be differentiated w.r.t.</li>
+<li><strong>order</strong>: order of differentiation w.r.t. xs - defaulted to 1.</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p>A list of <code>D^n y / Dx^n</code> for each y and x in <code>ys</code> and <code>xs</code>.</p>
+<p>A new functional object.</p>
 <hr />
-<h3 id="lambda_gradient">lambda_gradient</h3>
-<pre><code class="python">sciann.utils.lambda_gradient(xs, order=1, name='')
+<h3 id="diag_grad">diag_grad</h3>
+<pre><code class="python">sciann.utils.diag_grad()
 </code></pre>
 
-<p>Returns the gradients of y in <code>ys</code> w.r.t. x in <code>xs</code> using Lambda layers.</p>
-<p><code>ys</code> and <code>xs</code> are each a Tensor or a list of tensors.</p>
+<p>Computes diag of gradient tensor of functional object f.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>ys</strong>: A tensor or list of tesnors to be differentiated.</li>
-<li><strong>xs</strong>: A tensor or list of tensors to be used for differentiation.</li>
-<li><strong>name</strong>: A str name for the Lambda layer. </li>
+<li><strong>f</strong>: Functional object.</li>
+<li><strong>ys</strong>: layer name for <code>ys</code> to differentiate.</li>
+<li><strong>xs</strong>: layer name for <code>xs</code> to be differentiated w.r.t.</li>
+<li><strong>order</strong>: order of differentiation w.r.t. xs - defaulted to 1.</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p>A tuple, <code>(layers, grads)</code>.
-- <strong>layers</strong>: A Lambda layer or list of Lambda layers where the gradient operator is applied.
-- <strong>grads</strong>: A gradient tensor or list of gradient tensors. </p>
+<p>A new functional object.</p>
 <hr />
-<h3 id="diff">diff</h3>
-<pre><code class="python">sciann.utils.diff()
+<h3 id="div">div</h3>
+<pre><code class="python">sciann.utils.div()
 </code></pre>
 
-<p>Computes diff of functional object f.</p>
+<p>Computes Divergence of functional object f.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li><strong>f</strong>: Functional object.</li>
@@ -383,18 +381,20 @@
 <p><strong>Returns</strong></p>
 <p>A Functional.</p>
 <hr />
-<h3 id="div">div</h3>
-<pre><code class="python">sciann.utils.div(other)
+<h3 id="div_1">div</h3>
+<pre><code class="python">sciann.utils.div()
 </code></pre>
 
-<p>Element-wise division applied to the <code>Functional</code> objects.</p>
+<p>Computes Divergence of functional object f.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li><strong>f</strong>: Functional object.</li>
-<li><strong>other</strong>: A python number or a tensor or a functional object.</li>
+<li><strong>ys</strong>: layer name for <code>ys</code> to differentiate.</li>
+<li><strong>xs</strong>: layer name for <code>xs</code> to be differentiated w.r.t.</li>
+<li><strong>order</strong>: order of differentiation w.r.t. xs - defaulted to 1.</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p>A Functional.</p>
+<p>A new functional object.</p>
               
             </div>
           </div>
