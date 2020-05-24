@@ -72,16 +72,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../getting-started/functional-guide/">Guide to Functional</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Examples</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../examples/example-fitting-1d/">Curve fitting in 1D</a>
-                    </li>
-                </ul>
-                <ul>
+                <p class="caption"><span class="caption-text">Classes</span></p>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../scimodels/">SciModels</a>
                     </li>
-                </ul>
-                <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Functionals</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#functional">Functional</a>
@@ -94,21 +88,35 @@
     </li>
     </ul>
                     </li>
-                </ul>
-                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../variables/">Variables</a>
                     </li>
-                </ul>
-                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../fields/">Fields</a>
                     </li>
-                </ul>
-                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../constraints/">Constraints</a>
                     </li>
-                </ul>
-                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../utils/">Utils</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Examples</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../examples/example-fitting-1d/">Curve fitting in 1D</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">SciANN-Applications on Github</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="" href="https://github.com/sciann/sciann-applications">Github repository</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="https://github.com/sciann/sciann-applications/blob/master/SciANN-Linear-Quadratic-Regression/SciANN-Regression.ipynb">Linear and quadratic regression</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="https://github.com/sciann/sciann-applications/blob/master/SciANN-NN-Regression/SciANN-NN-Regression.ipynb">Curve fitting in 2D</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="https://github.com/sciann/sciann-applications/tree/master/SciANN-SolidMechanics">Physics-Informed Linear elasticity</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="https://github.com/sciann/sciann-applications/blob/master/SciANN-BurgersEquation/SciANN-BurgersEquation.ipynb">Solving Burgers Shock Equation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="https://github.com/sciann/sciann-applications/blob/master/SciANN-NavierStokes/SciANN-NavierStokes.ipynb">Physics-Informed Navier-Stokes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="https://github.com/sciann/sciann-applications/blob/master/SciANN-ElastoPlasticity/SciANN-ElastoPlasticity.ipynb">Physics-Informed Elasto-Plasticity</a>
                     </li>
                 </ul>
       </div>
@@ -130,6 +138,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="..">Docs</a> &raquo;</li>
     
+      
+        
+          <li>Classes &raquo;</li>
+        
       
     
     <li>Functionals</li>
@@ -172,7 +184,7 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L24">[source]</a></span></p>
 <h3 id="functional">Functional</h3>
-<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', output_activation='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7fec11c1d2d0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7fec11c1d350&gt;, dtype=None, trainable=True)
+<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', output_activation='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7fe6c974d1d0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7fe6c974d250&gt;, dtype=None, trainable=True)
 </code></pre>
 
 <p>Configures the Functional object (Neural Network).</p>
@@ -228,7 +240,7 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L12">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fec11610b90&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7fec11c146d0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7fec11c14790&gt;, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fe688298b90&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7fe6c97445d0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7fe6c9744690&gt;, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>
