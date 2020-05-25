@@ -182,9 +182,9 @@ model = SciModel(x, Data(Fxy),
 </code></pre>
 
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L24">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L25">[source]</a></span></p>
 <h3 id="functional">Functional</h3>
-<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', output_activation='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7fe6c974d1d0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7fe6c974d250&gt;, dtype=None, trainable=True)
+<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', output_activation='linear', kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7f7e789ff550&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7f7e789ff610&gt;, kernel_regularizer=None, bias_regularizer=None, dtype=None, trainable=True)
 </code></pre>
 
 <p>Configures the Functional object (Neural Network).</p>
@@ -206,6 +206,12 @@ model = SciModel(x, Data(Fxy),
     Activation function to be applied to the network output.</li>
 <li><strong>kernel_initializer</strong>: Initializer of the <code>Kernel</code>, from <code>k.initializers</code>.</li>
 <li><strong>bias_initializer</strong>: Initializer of the <code>Bias</code>, from <code>k.initializers</code>.</li>
+<li><strong>kernel_regularizer</strong>: Regularizer for the kernel.
+    By default, it uses l1=0.001 and l2=0.001 regularizations.
+    To set l1 and l2 to custom values, pass [l1, l2] or {'l1':l1, 'l2':l2}.</li>
+<li><strong>bias_regularizer</strong>: Regularizer for the bias.
+    By default, it uses l1=0.001 and l2=0.001 regularizations.
+    To set l1 and l2 to custom values, pass [l1, l2] or {'l1':l1, 'l2':l2}.</li>
 <li><strong>dtype</strong>: data-type of the network parameters, can be
     ('float16', 'float32', 'float64').
     Note: Only network inputs should be set.</li>
@@ -238,9 +244,9 @@ model = SciModel(x, Data(Fxy),
 </ul>
 <p><strong>Raises</strong></p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L12">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L13">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fe688298b90&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7fe6c97445d0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7fe6c9744690&gt;, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7f7ee822f170&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7f7e789ff210&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7f7e789ff310&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>
@@ -256,13 +262,19 @@ model = SciModel(x, Data(Fxy),
     Defaulted to a normal distribution.</li>
 <li><strong>bias_initializer</strong>: Initializer for the bias.
     Defaulted to a normal distribution.</li>
+<li><strong>kernel_regularizer</strong>: Regularizer for the kernel.
+    By default, it uses l1=0.001 and l2=0.001 regularizations.
+    To set l1 and l2 to custom values, pass [l1, l2] or {'l1':l1, 'l2':l2}.</li>
+<li><strong>bias_regularizer</strong>: Regularizer for the bias.
+    By default, it uses l1=0.001 and l2=0.001 regularizations.
+    To set l1 and l2 to custom values, pass [l1, l2] or {'l1':l1, 'l2':l2}.</li>
 <li><strong>trainable</strong>: Boolean to activate parameters of the network.</li>
 <li><strong>dtype</strong>: data-type of the network parameters, can be
     ('float16', 'float32', 'float64').</li>
 </ul>
 <p><strong>Raises</strong></p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/parameter.py#L23">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/parameter.py#L24">[source]</a></span></p>
 <h3 id="parameter">Parameter</h3>
 <pre><code class="python">sciann.functionals.parameter.Parameter(val=1.0, min_max=None, inputs=None, name=None, non_neg=None)
 </code></pre>

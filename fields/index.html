@@ -161,9 +161,9 @@ Fx = Field(name='Fx', units=10)
 </code></pre>
 
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L12">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L13">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fe688298b90&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7fe6c97445d0&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7fe6c9744690&gt;, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7f7ee822f170&gt;, kernel_initializer=&lt;keras.initializers.VarianceScaling object at 0x7f7e789ff210&gt;, bias_initializer=&lt;keras.initializers.RandomUniform object at 0x7f7e789ff310&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>
@@ -179,6 +179,12 @@ Fx = Field(name='Fx', units=10)
     Defaulted to a normal distribution.</li>
 <li><strong>bias_initializer</strong>: Initializer for the bias.
     Defaulted to a normal distribution.</li>
+<li><strong>kernel_regularizer</strong>: Regularizer for the kernel.
+    By default, it uses l1=0.001 and l2=0.001 regularizations.
+    To set l1 and l2 to custom values, pass [l1, l2] or {'l1':l1, 'l2':l2}.</li>
+<li><strong>bias_regularizer</strong>: Regularizer for the bias.
+    By default, it uses l1=0.001 and l2=0.001 regularizations.
+    To set l1 and l2 to custom values, pass [l1, l2] or {'l1':l1, 'l2':l2}.</li>
 <li><strong>trainable</strong>: Boolean to activate parameters of the network.</li>
 <li><strong>dtype</strong>: data-type of the network parameters, can be
     ('float16', 'float32', 'float64').</li>
