@@ -233,7 +233,7 @@ Example:
 </ul>
 <hr />
 <h3 id="train">train</h3>
-<pre><code class="python">train(x_true, y_true, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, shuffle=True, callbacks=None, stop_after=None, save_weights_to=None, save_weights_freq=0, default_zero_weight=0.0)
+<pre><code class="python">train(x_true, y_true, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, shuffle=True, callbacks=None, reduce_lr_after=None, reduce_lr_min_delta=0.001, stop_after=None, stop_loss_value=1e-08, save_weights_to=None, save_weights_freq=0, default_zero_weight=0.0)
 </code></pre>
 
 <p>Performs the training on the model.</p>
@@ -267,8 +267,14 @@ Example:
 <li><strong>shuffle</strong>: Boolean (whether to shuffle the training data).
     Default value is True.</li>
 <li><strong>callbacks</strong>: List of <code>keras.callbacks.Callback</code> instances.</li>
-<li><strong>stop_after</strong>: To stop after certain missed epochs.
-    Defaulted to epochs.</li>
+<li><strong>reduce_lr_after</strong>: patience to reduce learning rate or stop after certain missed epochs.
+    Defaulted to epochs max(10, epochs/10).</li>
+<li><strong>reduce_lr_min_delta</strong>: min absolute change in total loss value that is considered a successful change. 
+    Defaulted to 0.001. 
+    This values affects number of failed attempts to trigger reduce learning rate based on reduce_lr_after. </li>
+<li><strong>stop_after</strong>: To stop after certain missed epochs. Defaulted to total number of epochs.</li>
+<li><strong>stop_loss_value</strong>: The minimum value of the total loss that stops the training automatically. 
+    Defaulted to 1e-8. </li>
 <li><strong>save_weights_to</strong>: (file_path) If you want to save the state of the model (at the end of the training).</li>
 <li><strong>save_weights_freq</strong>: (Integer) Save weights every N epcohs.
     Defaulted to 0.</li>
