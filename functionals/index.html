@@ -86,6 +86,20 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#parameter">Parameter</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#eval">eval</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#get_weights">get_weights</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#set_weights">set_weights</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reinitialize_weights">reinitialize_weights</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#count_params">count_params</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#set_trainable">set_trainable</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#split">split</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../variables/">Variables</a>
@@ -244,7 +258,7 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L13">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fa42b187cb0&gt;, kernel_initializer=&lt;tensorflow.python.ops.init_ops.GlorotNormal object at 0x7fa42c614490&gt;, bias_initializer=&lt;tensorflow.python.keras.initializers.initializers_v1.RandomUniform object at 0x7fa3f85ce950&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fe058fe6cb0&gt;, kernel_initializer=&lt;tensorflow.python.ops.init_ops.GlorotNormal object at 0x7fe028e6f590&gt;, bias_initializer=&lt;tensorflow.python.keras.initializers.initializers_v1.RandomUniform object at 0x7fe028e6f910&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>
@@ -292,6 +306,89 @@ Inherited from Dense layer.</p>
     True (default) if only non-negative values are expected.</li>
 <li><strong>**kwargs</strong>: keras.layer.Dense accepted arguments.</li>
 </ul>
+<hr />
+<h3 id="eval">eval</h3>
+<pre><code class="python">eval()
+</code></pre>
+
+<p>Evaluates the functional object for a given input.</p>
+<p><strong>Arguments</strong></p>
+<p>(SciModel, Xs): 
+Evalutes the functional object from the beginning 
+of the graph defined with SciModel. 
+The Xs should match those of SciModel. </p>
+<p>(Xs):
+Evaluates the functional object from inputs of the functional. 
+Xs should match those of inputs to the functional. </p>
+<p><strong>Returns</strong></p>
+<p>Numpy array of dimensions of network outputs. </p>
+<p><strong>Raises</strong></p>
+<ul>
+<li><strong>ValueError</strong>:</li>
+<li><strong>TypeError</strong>:</li>
+</ul>
+<hr />
+<h3 id="get_weights">get_weights</h3>
+<pre><code class="python">get_weights(at_layer=None)
+</code></pre>
+
+<p>Get the weights and biases of different layers.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>at_layer</strong>: 
+    Get the weights of a specific layer. </li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>List of numpy array. </p>
+<hr />
+<h3 id="set_weights">set_weights</h3>
+<pre><code class="python">set_weights(weights)
+</code></pre>
+
+<p>Set the weights and biases of different layers.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>weights</strong>: Should take the dimensions as the output of ".get_weights"</li>
+</ul>
+<p><strong>Returns </strong></p>
+<hr />
+<h3 id="reinitialize_weights">reinitialize_weights</h3>
+<pre><code class="python">reinitialize_weights()
+</code></pre>
+
+<p>Re-initialize the weights and biases of a functional object.</p>
+<p><strong>Arguments</strong></p>
+<p><strong>Returns </strong></p>
+<hr />
+<h3 id="count_params">count_params</h3>
+<pre><code class="python">count_params()
+</code></pre>
+
+<p>Total number of parameters of a functional.</p>
+<p><strong>Arguments</strong></p>
+<p><strong>Returns </strong></p>
+<p>Total number of parameters.</p>
+<hr />
+<h3 id="set_trainable">set_trainable</h3>
+<pre><code class="python">set_trainable(val)
+</code></pre>
+
+<p>Set the weights and biases of a functional object trainable or not-trainable.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>val</strong>: (Ture, False)</li>
+</ul>
+<p><strong>Returns </strong></p>
+<hr />
+<h3 id="split">split</h3>
+<pre><code class="python">split()
+</code></pre>
+
+<p>In the case of <code>Functional</code> with multiple outputs,
+you can split the outputs and get an associated functional.</p>
+<p><strong>Returns</strong></p>
+<p>(f1, f2, ...): Tuple of splitted <code>Functional</code> objects
+    associated to each output.</p>
               
             </div>
           </div>

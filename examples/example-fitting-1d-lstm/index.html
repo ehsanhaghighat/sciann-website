@@ -162,7 +162,7 @@ from sciann.constraints import Data, Tie
 
 set_random_seed(1234)
 
-tunits = 10
+tunits = 3
 
 # Synthetic data generated from sin function over [0, 2pi]
 # x_true = np.linspace(0, np.pi*2, 10000).reshape(-1, tunits, 1)
@@ -178,17 +178,50 @@ t = RNNVariable(tunits, name='t', dtype='float64')
 
 # Each network is defined by Functional.
 y = RNNFunctional(
-    'y', t, [20, 20, 1], 
-    activation='tanh', 
-    recurrent_activation='tanh', 
+    'y', t, [5],
+    activation='tanh',
+    recurrent_activation='linear',
+    kernel_initializer=1.0,
+    recurrent_initializer=1.0,
+    bias_initializer=1.0,
     rnn_type=&quot;SimpleRNN&quot;
 )
 dy= diff(y, t)
+
+def rnn_cell(x):
+    y = []
+    actf = lambda x: x
+    for i, xi in enumerate(x):
+        if i==0:
+            y.append(
+                actf(np.ones([1,5]) + xi*np.ones([1,5]))
+            )
+        else:
+            y.append(
+                actf(np.ones([1, 5]) + xi * np.ones([1, 5]) + np.matmul(y[-1], np.ones([5, 5])))
+            )
+
+    actf = lambda x: np.tanh(x)
+    y = [actf(yi) for yi in y]
+    return y
+
+def rnn_net(x):
+    actf = lambda x: x
+    ys = rnn_cell(x)
+    return np.concatenate([1 + np.matmul(actf(y), np.ones([5,1])) for y in ys], axis=-1).flatten()
+
+test_rnn = lambda i: y.eval(x_true[i,:]) - rnn_net(x_true[i, :])
+
+for i in range(10):
+    print(test_rnn(i))
+
+raise ValueError
 
 # Define the target (output) of your model.
 c1 = Data(y)
 # c2 = Data((y[1]-y[0])/dx)
 c2 = Data(dy)
+
 
 # The model is formed with input `x` and condition `c1`.
 model = SciModel(t, [c1, c2])
