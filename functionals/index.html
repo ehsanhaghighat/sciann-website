@@ -196,9 +196,9 @@ model = SciModel(x, Data(Fxy),
 </code></pre>
 
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L28">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L29">[source]</a></span></p>
 <h3 id="functional">Functional</h3>
-<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', output_activation='linear', kernel_initializer=None, bias_initializer=None, kernel_regularizer=None, bias_regularizer=None, dtype=None, trainable=True)
+<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', output_activation='linear', res_net=False, kernel_initializer=None, bias_initializer=None, kernel_regularizer=None, bias_regularizer=None, dtype=None, trainable=True)
 </code></pre>
 
 <p>Configures the Functional object (Neural Network).</p>
@@ -218,6 +218,8 @@ model = SciModel(x, Data(Fxy),
     Last layer will have a linear output.</li>
 <li><strong>output_activation</strong>: defaulted to "linear".
     Activation function to be applied to the network output.</li>
+<li><strong>res_net</strong>: (True, False). Constructs a resnet architecture.
+    Defaulted to False.</li>
 <li><strong>kernel_initializer</strong>: Initializer of the <code>Kernel</code>, from <code>k.initializers</code>.</li>
 <li><strong>bias_initializer</strong>: Initializer of the <code>Bias</code>, from <code>k.initializers</code>.</li>
 <li><strong>kernel_regularizer</strong>: Regularizer for the kernel.
@@ -258,7 +260,7 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L13">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fe058fe6cb0&gt;, kernel_initializer=&lt;tensorflow.python.ops.init_ops.GlorotNormal object at 0x7fe028e6f590&gt;, bias_initializer=&lt;tensorflow.python.keras.initializers.initializers_v1.RandomUniform object at 0x7fe028e6f910&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
+<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fbb9b26d050&gt;, kernel_initializer=&lt;tensorflow.python.ops.init_ops.GlorotNormal object at 0x7fbb9bc47190&gt;, bias_initializer=&lt;tensorflow.python.keras.initializers.initializers_v1.RandomUniform object at 0x7fbb9bc471d0&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
 </code></pre>
 
 <p>Configures the <code>Field</code> class for the model outputs.</p>
@@ -284,7 +286,7 @@ model = SciModel(x, Data(Fxy),
 </ul>
 <p><strong>Raises</strong></p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/parameter.py#L26">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/parameter.py#L31">[source]</a></span></p>
 <h3 id="parameter">Parameter</h3>
 <pre><code class="python">sciann.functionals.parameter.Parameter(val=1.0, min_max=None, inputs=None, name=None, non_neg=None)
 </code></pre>
@@ -370,13 +372,16 @@ Xs should match those of inputs to the functional. </p>
 <p>Total number of parameters.</p>
 <hr />
 <h3 id="set_trainable">set_trainable</h3>
-<pre><code class="python">set_trainable(val)
+<pre><code class="python">set_trainable(val, layers=None)
 </code></pre>
 
-<p>Set the weights and biases of a functional object trainable or not-trainable.</p>
+<p>Set the weights and biases of a functional object trainable or not-trainable.
+Note: The SciModel should be called after this.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li><strong>val</strong>: (Ture, False)</li>
+<li><strong>layers</strong>: list of layers to be set trainable or non-trainable.
+    defaulted to None.</li>
 </ul>
 <p><strong>Returns </strong></p>
 <hr />

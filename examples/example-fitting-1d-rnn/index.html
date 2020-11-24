@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://www.sciann.com/examples/example-fitting-1d/">
+  <link rel="canonical" href="https://www.sciann.com/examples/example-fitting-1d-rnn/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Curve fitting in 1D - SciANN Documentation</title>
+  <title>Example fitting 1d rnn - SciANN Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Curve fitting in 1D";
-    var mkdocs_page_input_path = "examples/example-fitting-1d.md";
-    var mkdocs_page_url = "/examples/example-fitting-1d/";
+    var mkdocs_page_name = "Example fitting 1d rnn";
+    var mkdocs_page_input_path = "examples/example-fitting-1d-rnn.md";
+    var mkdocs_page_url = "/examples/example-fitting-1d-rnn/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -88,10 +88,8 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Examples</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Curve fitting in 1D</a>
-    <ul class="current">
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../example-fitting-1d/">Curve fitting in 1D</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">SciANN-Applications on Github</span></p>
@@ -131,15 +129,11 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Examples &raquo;</li>
-        
-      
     
-    <li>Curve fitting in 1D</li>
+    <li>Example fitting 1d rnn</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/sciann/sciann/edit/master/docs/sources/examples/example-fitting-1d.md"
+        <a href="https://github.com/sciann/sciann/edit/master/docs/sources/examples/example-fitting-1d-rnn.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -150,67 +144,40 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="curve-fitting-in-1d">Curve fitting in 1D</h1>
-<p>Here, a 1D curve fitting example is explored. Imagine, a synthetic data
-generated from \( \sin(x) \) over the range of \( [0, 2\pi] \).</p>
-<p>To train a neural network model on this curve, you should first define a <code>Variable</code>.</p>
-<p>A neural network with three layers, each containing 10 neurons, and with <code>tanh</code> activation function is then generated
-using the <code>Functional</code> class.</p>
-<p>The target is imposed on the output using the <code>Data</code> class from <code>Constraint</code>, and passed to the <code>SciModel</code> to form a
-SciANN model.</p>
-<pre><code class="python">import numpy as np
-from sciann import Variable, Functional, SciModel, Parameter
-from sciann.constraints import Data, MinMax
-from sciann.utils.math import diff
+                <pre><code class="python">import matplotlib.pyplot as plt
 import sciann as sn
 
-sn.set_random_seed(1234)
-# Synthetic data generated from sin function over [0, 2pi]
-x_true = np.linspace(0, np.pi*2, 10000)
-y_true = np.sin(x_true)
 
-# The network inputs should be defined with Variable.
-x = Variable('x', dtype='float64')
+omega = 2*np.pi/2.0
+omega_bar = 2*np.pi/1.5
+A = 1.0
+beta = 1.0
 
-# Each network is defined by Functional.
-y = Functional('y', x, [10, 10, 10], activation='l-tanh', res_net=True)
+tunits = 2
+NDATA = 1000
 
-d = Parameter(10.0, inputs=x, name='d')
+t_data = np.linspace(0, 4*np.pi, NDATA).reshape(-1,1)
+dt = np.diff(t_data.flatten()).mean()
+t_data = t_data + np.linspace(0, dt*(tunits-1), tunits).reshape(1, -1)
 
-# Define the target (output) of your model.
-c1 = Data(y)
+y_data = A*(np.sin(omega*t_data) - beta*np.sin(omega_bar*t_data))
 
-L = d*diff(y, x, order=2) + y
+# Add noise
+# y_noise = 0.15*np.std(y_data)*np.random.randn(NDATA)
 
-# The model is formed with input `x` and condition `c1`.
-model = SciModel(x, [c1, sn.PDE(L)])
 
-# Training: .train runs the optimization and finds the parameters.
-history = model.train(
-    x_true,
-    [y_true, 'zeros'],
-    batch_size=32,
-    epochs=100,
-    adaptive_weights=True,
-    log_parameters=[d]
-)
+t = sn.functionals.RNNVariable(tunits, 't')
+y = sn.functionals.RNNFunctional('y', t, [1], 'sin', recurrent_activation='sin')
 
-# used to evaluate the model after the training.
-y_pred = y.eval(model, x_true)
-d_pred = d.eval(model, x_true)
+mRNN = sn.SciModel(t, y)
+
+mRNN.train(t_data, y_data, learning_rate=0.001, epochs=10000, batch_size=100)
 
 </code></pre>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="../../utils/" class="btn btn-neutral" title="Utils"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -235,8 +202,6 @@ d_pred = d.eval(model, x_true)
       
           <a href="https://github.com/sciann/sciann/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
-      
-        <span><a href="../../utils/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

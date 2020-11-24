@@ -182,7 +182,7 @@ model = SciModel([x,y], Data(Fxy))
 Check Keras' documentation for more details.   </p>
 <p><code>SciModel</code> object also provides functionality such as <code>predict</code> and <code>save</code>.  </p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/models/model.py#L25">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/models/model.py#L29">[source]</a></span></p>
 <h3 id="scimodel">SciModel</h3>
 <pre><code class="python">sciann.models.model.SciModel(inputs=None, targets=None, loss_func='mse', optimizer='adam', load_weights_from=None, plot_to_file=None)
 </code></pre>
@@ -233,7 +233,7 @@ Example:
 </ul>
 <hr />
 <h3 id="train">train</h3>
-<pre><code class="python">train(x_true, y_true, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, shuffle=True, callbacks=None, reduce_lr_after=None, reduce_lr_min_delta=0.001, stop_after=None, stop_loss_value=1e-08, save_weights_to=None, save_weights_freq=0, default_zero_weight=0.0)
+<pre><code class="python">train(x_true, y_true, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, adaptive_weights=False, log_adaptive_weights=None, log_loss_gradients=None, shuffle=True, callbacks=None, stop_lr_value=1e-08, reduce_lr_after=None, reduce_lr_min_delta=0.0, stop_after=None, stop_loss_value=1e-08, log_parameters=None, log_parameters_freq=None, save_weights_to=None, save_weights_freq=0, default_zero_weight=0.0, validation_data=None)
 </code></pre>
 
 <p>Performs the training on the model.</p>
@@ -266,10 +266,18 @@ Example:
         learning_rate = ([0, 100, 1000], [0.001, 0.0005, 0.00001])</li>
 <li><strong>shuffle</strong>: Boolean (whether to shuffle the training data).
     Default value is True.</li>
+<li><strong>adaptive_weights</strong>: Defaulted to False (no updates - evaluated once in the beginning).
+    Used if the model is compiled with adaptive_weights.</li>
+<li><strong>log_adaptive_weights</strong>: Logging the weights and gradients of adaptive_weight.
+    Defaulted to adaptive_weights.</li>
+<li><strong>log_loss_gradients</strong>: Frequency for logging the norm2 of gradients of each target.
+    Defaulted to None.</li>
 <li><strong>callbacks</strong>: List of <code>keras.callbacks.Callback</code> instances.</li>
 <li><strong>reduce_lr_after</strong>: patience to reduce learning rate or stop after certain missed epochs.
     Defaulted to epochs max(10, epochs/10).</li>
-<li><strong>reduce_lr_min_delta</strong>: min absolute change in total loss value that is considered a successful change. 
+<li><strong>stop_lr_value</strong>: stop the training if learning rate goes lower than this value.
+    Defaulted to 1e-8.</li>
+<li><strong>reduce_lr_min_delta</strong>: min absolute change in total loss value that is considered a successful change.
     Defaulted to 0.001. 
     This values affects number of failed attempts to trigger reduce learning rate based on reduce_lr_after. </li>
 <li><strong>stop_after</strong>: To stop after certain missed epochs. Defaulted to total number of epochs.</li>
