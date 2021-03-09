@@ -153,7 +153,7 @@
                 <h1 id="getting-started-with-the-sciann-model-or-scimodel">Getting started with the SciANN model or <code>SciModel</code></h1>
 <p>The <code>SciModel</code> is the relation between network inputs, i.e. <code>Variable</code> and network outputs, i.e. <code>Conditions</code>. </p>
 <p>You can set up a <code>SciModel</code> as simple as the code bellow:</p>
-<pre><code class="python">from sciann import Variable, Functional, SciModel
+<pre><code class="language-python">from sciann import Variable, Functional, SciModel
 from sciann.constraints import Data
 
 x = Variable(&quot;x&quot;)
@@ -161,7 +161,6 @@ y = Functional(&quot;y&quot;, x)
 cy = Data(y)
 model = SciModel(cy)
 </code></pre>
-
 <hr />
               
             </div>

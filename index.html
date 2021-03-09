@@ -164,29 +164,30 @@
 <li>Takes advantage TensorFlow and Keras features including seamlessly running on CPU and GPU.</li>
 </ul>
 <p>For more details, check out our review paper at <a href="https://arxiv.org/abs/2005.08803">https://arxiv.org/abs/2005.08803</a> and the documentation at <a href="https://sciann.com">SciANN.com</a>.</p>
+<p>Have questions or would like to contribute, please join <a href="https://join.slack.com/t/sciann/shared_invite/zt-ne1f5jlx-k_dY8RGo3ZreDXwz0f~CeA">sciann.slack.com</a>.</p>
 <p>Cite SciANN in your publications if it helps your research:</p>
-<pre><code>@misc{haghighat2020sciann,
-    title={SciANN: A Keras wrapper for scientific computations and 
-           physics-informed deep learning using artificial neural networks},
-    author={Ehsan Haghighat and Ruben Juanes},
-    year={2020},
-    eprint={2005.08803},
-    archivePrefix={arXiv},
-    primaryClass={cs.OH},
-    url = {https://www.sciann.com}
-    howpublished={\url{https://github.com/sciann/sciann.git}}
+<pre><code>@article{haghighat2020sciann,
+title = {SciANN: A Keras/TensorFlow wrapper for scientific computations and physics-informed deep learning using artificial neural networks},
+journal = {Computer Methods in Applied Mechanics and Engineering},
+volume = {373},
+pages = {113552},
+year = {2021},
+issn = {0045-7825},
+doi = {https://doi.org/10.1016/j.cma.2020.113552},
+url = {https://www.sciencedirect.com/science/article/pii/S0045782520307374},
+author = {Ehsan Haghighat and Ruben Juanes},
+keywords = {SciANN, Deep neural networks, Scientific computations, PINN, vPINN},
 }
 </code></pre>
-
 <p>SciANN is compatible with: <strong>Python 2.7-3.6</strong>.</p>
-<p>Have questions or like collaborations, email <a href="mailto:ehsanhaghighat@sciann.com">Ehsan Haghighat</a>.</p>
+<p>You can also email me at <a href="mailto:ehsanhaghighat@sciann.com">Ehsan Haghighat</a>.</p>
 <hr />
 <h2 id="getting-started-30-seconds-to-sciann">Getting started: 30 seconds to SciANN</h2>
 <p>The core data structure of SciANN is a <code>Functional</code>, a way to organize inputs (<code>Variables</code>) and outputs (<code>Fields</code>) of a network. </p>
 <p>Targets are imposed on <code>Functional</code> instances using <code>Constraint</code>s. </p>
 <p>The SciANN model (<code>SciModel</code>) is formed from inputs (<code>Variables</code>) and targets(<code>Constraints</code>). The model is then trained by calling the <code>solve</code> function.  </p>
 <p>Here is the simplest <code>SciANN</code> model:</p>
-<pre><code class="python">from sciann import Variable, Functional, SciModel
+<pre><code class="language-python">from sciann import Variable, Functional, SciModel
 from sciann.constraints import Data
 
 x = Variable('x')
@@ -195,22 +196,18 @@ y = Functional('y')
 # y_true is a Numpy array of (N,1) -- with N as number of samples.  
 model = SciModel(x, Data(y))
 </code></pre>
-
 <p>This is associated to the simplest neural network possible, i.e. a linear relation between the input variable <code>x</code> and the output variable <code>y</code> with only two parameters to be learned.</p>
 <p>Plotting a network is as easy as passing a file_name to the SciModel:</p>
-<pre><code class="python">model = SciModel(x, Data(y), plot_to_file='file_path')
+<pre><code class="language-python">model = SciModel(x, Data(y), plot_to_file='file_path')
 </code></pre>
-
 <p>Once your model looks good, perform the learning with <code>.solve()</code>:</p>
-<pre><code class="python"># x_true is a Numpy array of (N,1) -- with N as number of samples. 
+<pre><code class="language-python"># x_true is a Numpy array of (N,1) -- with N as number of samples. 
 model.train(x_true, y_true, epochs=5, batch_size=32)
 </code></pre>
-
 <p>You can iterate on your training data in batches and in multiple epochs. Please check <a href="https://keras.io">Keras</a> documentation on <code>model.fit</code> for more information on possible options. </p>
 <p>You can evaluate the model any time on new data:</p>
-<pre><code class="python">classes = model.predict(x_test, batch_size=128)
+<pre><code class="language-python">classes = model.predict(x_test, batch_size=128)
 </code></pre>
-
 <p>In the <a href="https://github.com/sciann/sciann-applications">application folder</a> of the repository, you will find some examples of Linear Elasticity, Flow, Flow in Porous Media, etc.</p>
 <hr />
 <h2 id="installation">Installation</h2>
@@ -231,28 +228,23 @@ model.train(x_true, y_true, epochs=5, batch_size=32)
 </ul>
 <p>Note: These installation steps assume that you are on a Linux or Mac environment.
 If you are on Windows, you will need to remove <code>sudo</code> to run the commands below.</p>
-<pre><code class="sh">sudo pip install sciann
+<pre><code class="language-sh">sudo pip install sciann
 </code></pre>
-
 <p>If you are using a virtualenv, you may want to avoid using sudo:</p>
-<pre><code class="sh">pip install sciann
+<pre><code class="language-sh">pip install sciann
 </code></pre>
-
 <ul>
 <li><strong>Alternatively: install SciANN from the GitHub source:</strong></li>
 </ul>
 <p>First, clone SciANN using <code>git</code>:</p>
-<pre><code class="sh">git clone https://github.com/sciann/sciann.git
+<pre><code class="language-sh">git clone https://github.com/sciann/sciann.git
 </code></pre>
-
 <p>Then, <code>cd</code> to the SciANN folder and run the install command:</p>
-<pre><code class="sh">sudo python setup.py install
+<pre><code class="language-sh">sudo python setup.py install
 </code></pre>
-
 <p>or</p>
-<pre><code class="sh">sudo pip install .
+<pre><code class="language-sh">sudo pip install .
 </code></pre>
-
 <hr />
 <h2 id="why-this-name-sciann">Why this name, SciANN?</h2>
 <p>Scientific Computational with Artificial Neural Networks.</p>
@@ -315,5 +307,5 @@ If you are on Windows, you will need to remove <code>sudo</code> to run the comm
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-11-24 05:42:12.110502+00:00
+Build Date UTC : 2021-03-09 00:13:20.050372+00:00
 -->

@@ -177,7 +177,7 @@
 <p>Mathematically, a <code>functional</code> is a general mapping from input set \(X\) onto some output set \(Y\). Once the parameters of this transformation are found, this mapping is called a <code>function</code>. </p>
 <p><code>Functional</code>s are needed to form <code>SciModels</code>. </p>
 <p>A <code>Functional</code> is a class to form complex architectures (mappings) from inputs (<code>Variables</code>) to the outputs. </p>
-<pre><code class="python">from sciann import Variable, Functional
+<pre><code class="language-python">from sciann import Variable, Functional
 
 x = Variable('x')
 y = Variable('y')
@@ -186,21 +186,18 @@ Fxy = Functional('Fxy', [x, y],
                  hidden_layers=[10, 20, 10],
                  activation='tanh')
 </code></pre>
-
 <p><code>Functionals</code> can be plotted when a <code>SciModel</code> is formed. A minimum of one <code>Constraint</code> is needed to form the SciModel</p>
-<pre><code class="python">from sciann.constraints import Data
+<pre><code class="language-python">from sciann.constraints import Data
 from sciann import SciModel
 
 model = SciModel(x, Data(Fxy), 
                  plot_to_file='output.png')
 </code></pre>
-
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/functional.py#L29">[source]</a></span></p>
 <h3 id="functional">Functional</h3>
-<pre><code class="python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', output_activation='linear', res_net=False, kernel_initializer=None, bias_initializer=None, kernel_regularizer=None, bias_regularizer=None, dtype=None, trainable=True)
+<pre><code class="language-python">sciann.functionals.functional.Functional(fields=None, variables=None, hidden_layers=None, activation='tanh', output_activation='linear', res_net=False, kernel_initializer=None, bias_initializer=None, kernel_regularizer=None, bias_regularizer=None, dtype=None, trainable=True)
 </code></pre>
-
 <p>Configures the Functional object (Neural Network).</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -241,9 +238,8 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/variable.py#L10">[source]</a></span></p>
 <h3 id="variable">Variable</h3>
-<pre><code class="python">sciann.functionals.variable.Variable(name=None, units=1, tensor=None, dtype=None)
+<pre><code class="language-python">sciann.functionals.variable.Variable(name=None, units=1, tensor=None, dtype=None)
 </code></pre>
-
 <p>Configures the <code>Variable</code> object for the network's input.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -260,9 +256,8 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L13">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fbb9b26d050&gt;, kernel_initializer=&lt;tensorflow.python.ops.init_ops.GlorotNormal object at 0x7fbb9bc47190&gt;, bias_initializer=&lt;tensorflow.python.keras.initializers.initializers_v1.RandomUniform object at 0x7fbb9bc471d0&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
+<pre><code class="language-python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fbb9b26d050&gt;, kernel_initializer=&lt;tensorflow.python.ops.init_ops.GlorotNormal object at 0x7fbb9bc47190&gt;, bias_initializer=&lt;tensorflow.python.keras.initializers.initializers_v1.RandomUniform object at 0x7fbb9bc471d0&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
 </code></pre>
-
 <p>Configures the <code>Field</code> class for the model outputs.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -288,9 +283,8 @@ model = SciModel(x, Data(Fxy),
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/parameter.py#L31">[source]</a></span></p>
 <h3 id="parameter">Parameter</h3>
-<pre><code class="python">sciann.functionals.parameter.Parameter(val=1.0, min_max=None, inputs=None, name=None, non_neg=None)
+<pre><code class="language-python">sciann.functionals.parameter.Parameter(val=1.0, min_max=None, inputs=None, name=None, non_neg=None)
 </code></pre>
-
 <p>Parameter functional to be used for parameter inversion.
 Inherited from Dense layer.</p>
 <p><strong>Arguments</strong></p>
@@ -310,9 +304,8 @@ Inherited from Dense layer.</p>
 </ul>
 <hr />
 <h3 id="eval">eval</h3>
-<pre><code class="python">eval()
+<pre><code class="language-python">eval()
 </code></pre>
-
 <p>Evaluates the functional object for a given input.</p>
 <p><strong>Arguments</strong></p>
 <p>(SciModel, Xs): 
@@ -331,9 +324,8 @@ Xs should match those of inputs to the functional. </p>
 </ul>
 <hr />
 <h3 id="get_weights">get_weights</h3>
-<pre><code class="python">get_weights(at_layer=None)
+<pre><code class="language-python">get_weights(at_layer=None)
 </code></pre>
-
 <p>Get the weights and biases of different layers.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -344,9 +336,8 @@ Xs should match those of inputs to the functional. </p>
 <p>List of numpy array. </p>
 <hr />
 <h3 id="set_weights">set_weights</h3>
-<pre><code class="python">set_weights(weights)
+<pre><code class="language-python">set_weights(weights)
 </code></pre>
-
 <p>Set the weights and biases of different layers.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -355,26 +346,23 @@ Xs should match those of inputs to the functional. </p>
 <p><strong>Returns </strong></p>
 <hr />
 <h3 id="reinitialize_weights">reinitialize_weights</h3>
-<pre><code class="python">reinitialize_weights()
+<pre><code class="language-python">reinitialize_weights()
 </code></pre>
-
 <p>Re-initialize the weights and biases of a functional object.</p>
 <p><strong>Arguments</strong></p>
 <p><strong>Returns </strong></p>
 <hr />
 <h3 id="count_params">count_params</h3>
-<pre><code class="python">count_params()
+<pre><code class="language-python">count_params()
 </code></pre>
-
 <p>Total number of parameters of a functional.</p>
 <p><strong>Arguments</strong></p>
 <p><strong>Returns </strong></p>
 <p>Total number of parameters.</p>
 <hr />
 <h3 id="set_trainable">set_trainable</h3>
-<pre><code class="python">set_trainable(val, layers=None)
+<pre><code class="language-python">set_trainable(val, layers=None)
 </code></pre>
-
 <p>Set the weights and biases of a functional object trainable or not-trainable.
 Note: The SciModel should be called after this.</p>
 <p><strong>Arguments</strong></p>
@@ -386,9 +374,8 @@ Note: The SciModel should be called after this.</p>
 <p><strong>Returns </strong></p>
 <hr />
 <h3 id="split">split</h3>
-<pre><code class="python">split()
+<pre><code class="language-python">split()
 </code></pre>
-
 <p>In the case of <code>Functional</code> with multiple outputs,
 you can split the outputs and get an associated functional.</p>
 <p><strong>Returns</strong></p>

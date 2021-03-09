@@ -162,7 +162,7 @@
 <p><code>SciModel</code> is similar to Keras' <code>Model</code>, prepared to make scientific model creation effortless. 
 The inputs are of <code>Variable</code> objects, and the outputs are <code>Target</code> objects.
 As an example:  </p>
-<pre><code class="python">from sciann import Variable, Functional, SciModel, Data
+<pre><code class="language-python">from sciann import Variable, Functional, SciModel, Data
 
 x = Variable('x')
 y = Variable('y')
@@ -173,20 +173,17 @@ Fxy = Functional('Fxy', [x, y],
 
 model = SciModel([x,y], Data(Fxy))
 </code></pre>
-
 <p><code>SciModel</code> can be trained by calling <code>model.train</code>. </p>
-<pre><code class="python">training_history = model.train([X_data, Y_data], Fxy_data)
+<pre><code class="language-python">training_history = model.train([X_data, Y_data], Fxy_data)
 </code></pre>
-
 <p><code>training_history</code> object records the loss for each epoch as well as other parameters. 
 Check Keras' documentation for more details.   </p>
 <p><code>SciModel</code> object also provides functionality such as <code>predict</code> and <code>save</code>.  </p>
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/models/model.py#L29">[source]</a></span></p>
 <h3 id="scimodel">SciModel</h3>
-<pre><code class="python">sciann.models.model.SciModel(inputs=None, targets=None, loss_func='mse', optimizer='adam', load_weights_from=None, plot_to_file=None)
+<pre><code class="language-python">sciann.models.model.SciModel(inputs=None, targets=None, loss_func='mse', optimizer='adam', load_weights_from=None, plot_to_file=None)
 </code></pre>
-
 <p>Configures the model for training.
 Example:
 <strong>Arguments</strong></p>
@@ -233,9 +230,8 @@ Example:
 </ul>
 <hr />
 <h3 id="train">train</h3>
-<pre><code class="python">train(x_true, y_true, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, adaptive_weights=False, log_adaptive_weights=None, log_loss_gradients=None, shuffle=True, callbacks=None, stop_lr_value=1e-08, reduce_lr_after=None, reduce_lr_min_delta=0.0, stop_after=None, stop_loss_value=1e-08, log_parameters=None, log_parameters_freq=None, save_weights_to=None, save_weights_freq=0, default_zero_weight=0.0, validation_data=None)
+<pre><code class="language-python">train(x_true, y_true, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, adaptive_weights=False, log_adaptive_weights=None, log_loss_gradients=None, shuffle=True, callbacks=None, stop_lr_value=1e-08, reduce_lr_after=None, reduce_lr_min_delta=0.0, stop_after=None, stop_loss_value=1e-08, log_parameters=None, log_parameters_freq=None, save_weights_to=None, save_weights_freq=0, default_zero_weight=0.0, validation_data=None)
 </code></pre>
-
 <p>Performs the training on the model.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -292,9 +288,8 @@ Example:
 <p>A Keras 'History' object after performing fitting.</p>
 <hr />
 <h3 id="predict">predict</h3>
-<pre><code class="python">predict(xs, batch_size=None, verbose=0, steps=None)
+<pre><code class="language-python">predict(xs, batch_size=None, verbose=0, steps=None)
 </code></pre>
-
 <p>Predict output from network.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -314,9 +309,8 @@ Example:
 <p>ValueError if number of <code>xs</code>s is different from number of <code>inputs</code>.</p>
 <hr />
 <h3 id="loss_functions">loss_functions</h3>
-<pre><code class="python">loss_function)
+<pre><code class="language-python">loss_function)
 </code></pre>
-
 <p>loss_function returns the callable object to evaluate the loss.</p>
 <p><strong>Arguments</strong></p>
 <ul>

@@ -155,17 +155,15 @@
                 <h1 id="intro">Intro</h1>
 <p><code>Field</code> is a layer to define outputs of each Functional. It is very much similar to Keras' <code>Dense</code> layer. </p>
 <p>It is not necessary to be defined explicitly, however, if you are expecting multiple outputs, it is better to be defined using <code>Field</code>.  </p>
-<pre><code class="python">from sciann import Field
+<pre><code class="language-python">from sciann import Field
 
 Fx = Field(name='Fx', units=10)
 </code></pre>
-
 <hr />
 <p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L13">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fbb9b26d050&gt;, kernel_initializer=&lt;tensorflow.python.ops.init_ops.GlorotNormal object at 0x7fbb9bc47190&gt;, bias_initializer=&lt;tensorflow.python.keras.initializers.initializers_v1.RandomUniform object at 0x7fbb9bc471d0&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
+<pre><code class="language-python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fbb9b26d050&gt;, kernel_initializer=&lt;tensorflow.python.ops.init_ops.GlorotNormal object at 0x7fbb9bc47190&gt;, bias_initializer=&lt;tensorflow.python.keras.initializers.initializers_v1.RandomUniform object at 0x7fbb9bc471d0&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
 </code></pre>
-
 <p>Configures the <code>Field</code> class for the model outputs.</p>
 <p><strong>Arguments</strong></p>
 <ul>
