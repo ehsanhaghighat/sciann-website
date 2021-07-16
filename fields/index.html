@@ -160,9 +160,9 @@
 Fx = Field(name='Fx', units=10)
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L13">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/functionals/field.py#L14">[source]</a></span></p>
 <h3 id="field">Field</h3>
-<pre><code class="language-python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7fbb9b26d050&gt;, kernel_initializer=&lt;tensorflow.python.ops.init_ops.GlorotNormal object at 0x7fbb9bc47190&gt;, bias_initializer=&lt;tensorflow.python.keras.initializers.initializers_v1.RandomUniform object at 0x7fbb9bc471d0&gt;, kernel_regularizer=None, bias_regularizer=None, trainable=True, dtype=None)
+<pre><code class="language-python">sciann.functionals.field.Field(name=None, units=1, activation=&lt;function linear at 0x7f87707bc8b0&gt;, kernel_initializer=None, bias_initializer=None, kernel_regularizer=None, bias_regularizer=None, trainable=True, use_bias=True, dtype=None)
 </code></pre>
 <p>Configures the <code>Field</code> class for the model outputs.</p>
 <p><strong>Arguments</strong></p>
@@ -182,6 +182,7 @@ Fx = Field(name='Fx', units=10)
 <li><strong>bias_regularizer</strong>: Regularizer for the bias.
     To set l1 and l2 to custom values, pass [l1, l2] or {'l1':l1, 'l2':l2}.</li>
 <li><strong>trainable</strong>: Boolean to activate parameters of the network.</li>
+<li><strong>use_bias</strong>: Boolean to add bias to the network.</li>
 <li><strong>dtype</strong>: data-type of the network parameters, can be
     ('float16', 'float32', 'float64').</li>
 </ul>

@@ -158,48 +158,46 @@ generated from \( \sin(x) \) over the range of \( [0, 2\pi] \).</p>
 using the <code>Functional</code> class.</p>
 <p>The target is imposed on the output using the <code>Data</code> class from <code>Constraint</code>, and passed to the <code>SciModel</code> to form a
 SciANN model.</p>
-<pre><code class="language-python">import numpy as np
+<p>```python</p>
+<h1 id="curve-fitting-in-1d_1">Curve fitting in 1D</h1>
+<p>Here, a 1D curve fitting example is explored. Imagine, a synthetic data
+generated from \( \sin(x) \) over the range of \( [0, 2\pi] \).</p>
+<p>To train a neural network model on this curve, you should first define a <code>Variable</code>.</p>
+<p>A neural network with three layers, each containing 10 neurons, and with <code>tanh</code> activation function is then generated
+using the <code>Functional</code> class.</p>
+<p>The target is imposed on the output using the <code>Data</code> class from <code>Constraint</code>, and passed to the <code>SciModel</code> to form a
+SciANN model.
+'''</p>
+<p>import numpy as np
 from sciann import Variable, Functional, SciModel, Parameter
 from sciann.constraints import Data, MinMax
-from sciann.utils.math import diff
-import sciann as sn
-
-sn.set_random_seed(1234)
-# Synthetic data generated from sin function over [0, 2pi]
-x_true = np.linspace(0, np.pi*2, 10000)
-y_true = np.sin(x_true)
-
-# The network inputs should be defined with Variable.
-x = Variable('x', dtype='float64')
-
-# Each network is defined by Functional.
-y = Functional('y', x, [10, 10, 10], activation='l-tanh', res_net=True)
-
-d = Parameter(10.0, inputs=x, name='d')
-
-# Define the target (output) of your model.
-c1 = Data(y)
-
-L = d*diff(y, x, order=2) + y
-
-# The model is formed with input `x` and condition `c1`.
-model = SciModel(x, [c1, sn.PDE(L)])
-
-# Training: .train runs the optimization and finds the parameters.
-history = model.train(
-    x_true,
-    [y_true, 'zeros'],
-    batch_size=32,
-    epochs=100,
-    adaptive_weights=True,
-    log_parameters=[d]
-)
-
-# used to evaluate the model after the training.
-y_pred = y.eval(model, x_true)
-d_pred = d.eval(model, x_true)
-
-</code></pre>
+import sciann as sn </p>
+<h1 id="synthetic-data-generated-from-sin-function-over-0-2pi">Synthetic data generated from sin function over [0, 2pi]</h1>
+<p>x_true = np.linspace(0, np.pi*2, 10000)
+y_true = np.sin(x_true)</p>
+<h1 id="the-network-inputs-should-be-defined-with-variable">The network inputs should be defined with Variable.</h1>
+<p>x = Variable('x', dtype='float64')
+xf = Functional('xf', x)
+xf.set_trainable(False)</p>
+<h1 id="each-network-is-defined-by-functional">Each network is defined by Functional.</h1>
+<p>y = Functional('y', xf, [10, 10, 10], activation='tanh')</p>
+<p>d = Parameter(2.0, inputs=x)</p>
+<h1 id="define-the-target-output-of-your-model">Define the target (output) of your model.</h1>
+<p>c1 = Data(y)</p>
+<h1 id="the-model-is-formed-with-input-x-and-condition-c1">The model is formed with input <code>x</code> and condition <code>c1</code>.</h1>
+<p>model = SciModel(x, [c1], optimizer='adam')
+model.summary()</p>
+<h1 id="training-train-runs-the-optimization-and-finds-the-parameters">Training: .train runs the optimization and finds the parameters.</h1>
+<p>model.train(x_true,
+            [y_true],
+            learning_rate={"scheduler":"SineExponentialDecay", "verify": True},
+            batch_size=32,
+            epochs=2,
+            adaptive_weights={'method': "NTK", 'freq': 10, "use_score": True, "alpha": 1.}
+            )</p>
+<h1 id="used-to-evaluate-the-model-after-the-training">used to evaluate the model after the training.</h1>
+<p>y_pred = y.eval(model, x_true)</p>
+<p>print(x_true.shape, y_pred.shape)```</p>
               
             </div>
           </div>

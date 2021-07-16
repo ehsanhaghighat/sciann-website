@@ -180,7 +180,7 @@ model = SciModel([x,y], Data(Fxy))
 Check Keras' documentation for more details.   </p>
 <p><code>SciModel</code> object also provides functionality such as <code>predict</code> and <code>save</code>.  </p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/models/model.py#L29">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/sciann/sciann/tree/master/sciann/models/model.py#L31">[source]</a></span></p>
 <h3 id="scimodel">SciModel</h3>
 <pre><code class="language-python">sciann.models.model.SciModel(inputs=None, targets=None, loss_func='mse', optimizer='adam', load_weights_from=None, plot_to_file=None)
 </code></pre>
@@ -230,12 +230,13 @@ Example:
 </ul>
 <hr />
 <h3 id="train">train</h3>
-<pre><code class="language-python">train(x_true, y_true, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, adaptive_weights=False, log_adaptive_weights=None, log_loss_gradients=None, shuffle=True, callbacks=None, stop_lr_value=1e-08, reduce_lr_after=None, reduce_lr_min_delta=0.0, stop_after=None, stop_loss_value=1e-08, log_parameters=None, log_parameters_freq=None, save_weights_to=None, save_weights_freq=0, default_zero_weight=0.0, validation_data=None)
+<pre><code class="language-python">train(x_true, y_true=None, weights=None, target_weights=None, batch_size=64, epochs=100, learning_rate=0.001, adaptive_weights=None, adaptive_sample_weights=None, log_loss_gradients=None, shuffle=True, callbacks=[], stop_lr_value=1e-08, reduce_lr_after=None, reduce_lr_min_delta=0.0, stop_after=None, stop_loss_value=1e-08, log_parameters=None, log_functionals=None, log_loss_landscape=None, save_weights=None, default_zero_weight=0.0, validation_data=None)
 </code></pre>
 <p>Performs the training on the model.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li><strong>x_true</strong>: list of <code>Xs</code> associated to targets of <code>Y</code>.
+    Alternatively, you can pass a Sequence object (keras.utils.Sequence).
     Expecting a list of np.ndarray of size (N,1) each,
     with N as the sample size.</li>
 <li><strong>y_true</strong>: list of true <code>Ys</code> associated to the targets defined during model setup.
@@ -262,12 +263,14 @@ Example:
         learning_rate = ([0, 100, 1000], [0.001, 0.0005, 0.00001])</li>
 <li><strong>shuffle</strong>: Boolean (whether to shuffle the training data).
     Default value is True.</li>
-<li><strong>adaptive_weights</strong>: Defaulted to False (no updates - evaluated once in the beginning).
-    Used if the model is compiled with adaptive_weights.</li>
-<li><strong>log_adaptive_weights</strong>: Logging the weights and gradients of adaptive_weight.
-    Defaulted to adaptive_weights.</li>
-<li><strong>log_loss_gradients</strong>: Frequency for logging the norm2 of gradients of each target.
-    Defaulted to None.</li>
+<li><strong>adaptive_weights</strong>: Pass a Dict with the following keys:
+    . method: GP or NTK.
+    . freq: Freq to update the weights.
+    . log_freq: Freq to log the weights and gradients in the history object.
+    . beta: The beta parameter in from Gradient Pathology paper.</li>
+<li><strong>log_loss_gradients</strong>: Pass a Dict with the following keys:
+    . freq: Freq of logs. Defaulted to 100.
+    . path: Path to log the gradients.</li>
 <li><strong>callbacks</strong>: List of <code>keras.callbacks.Callback</code> instances.</li>
 <li><strong>reduce_lr_after</strong>: patience to reduce learning rate or stop after certain missed epochs.
     Defaulted to epochs max(10, epochs/10).</li>
@@ -278,7 +281,25 @@ Example:
     This values affects number of failed attempts to trigger reduce learning rate based on reduce_lr_after. </li>
 <li><strong>stop_after</strong>: To stop after certain missed epochs. Defaulted to total number of epochs.</li>
 <li><strong>stop_loss_value</strong>: The minimum value of the total loss that stops the training automatically. 
-    Defaulted to 1e-8. </li>
+    Defaulted to 1e-8.</li>
+<li><strong>log_parameters</strong>: Dict object expecting the following keys:
+    . parameters: pass list of parameters.
+    . freq: pass freq of outputs.</li>
+<li><strong>log_functionals</strong>: Dict object expecting the following keys:
+    . functionals: List of functionals to log their training history.
+    . inputs: The input grid to evaluate the value of each functional.
+              Should be of the same size as the inputs to the model.train.
+    . path: Path to the location that the csv files will be logged.
+    . freq: Freq of logging the functionals.</li>
+<li><strong>log_loss_landscape</strong>: Dict object expecting the following arguments:
+    . norm: defaulted to 2.
+    . resolution: defaulted to 10.
+    . path: Path to the location that the csv files will be logged.
+    . freq: Freq of logging the loss landscape.</li>
+<li><strong>save_weights</strong>: (dict) Dict object expecting the following information:
+    . path: defaulted to the current path.
+    . freq: freq of calling CheckPoint callback.
+    . best: If True, only saves the best loss, otherwise save all weights at every <code>freq</code> epochs.</li>
 <li><strong>save_weights_to</strong>: (file_path) If you want to save the state of the model (at the end of the training).</li>
 <li><strong>save_weights_freq</strong>: (Integer) Save weights every N epcohs.
     Defaulted to 0.</li>
@@ -318,7 +339,10 @@ Example:
 <li>"mse" for <code>Mean Squared Error</code> or</li>
 <li>"mae" for <code>Mean Absolute Error</code> or</li>
 <li>"se" for <code>Squared Error</code> or</li>
-<li>"ae" for <code>Absolute Error</code>.</li>
+<li>"ae" for <code>Absolute Error</code> or</li>
+<li>"sse" for <code>Squared Sum Error</code> or</li>
+<li>"ase" for <code>Absolute Sum Error</code> or</li>
+<li>"rse" for <code>Reduce Sum Error</code>.</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p>Callable function that gets (y_true, y_pred) as the input and
